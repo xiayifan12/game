@@ -7,15 +7,15 @@
 
     <!--下面一句表示当页面打开时先设置定时器，当时间为0时启动hideURLbar函数-->
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all"> <!--media="all"表示再任何设备上都套用这个css-->
-    <link href="css/style_game.css" rel="stylesheet" type="text/css" media="all">
+    <link href="../static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"> <!--media="all"表示再任何设备上都套用这个css-->
+    <link href="../static/css/style_game.css" rel="stylesheet" type="text/css" media="all">
 
     <!--字体-->
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 
-    <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="js/move-top.js"></script>
-    <script type="text/javascript" src="js/easing.js"></script>
+    <script type="text/javascript" src="../static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../static/js/move-top.js"></script>
+    <script type="text/javascript" src="../static/js/easing.js"></script>
 
     <script type="text/javascript">
         jQuery(document).ready(function($) {
@@ -27,16 +27,16 @@
     </script>
 </head>
 <body>
-<div class="header" id="home" style="background: url(./images/zld1.jpg) no-repeat center top">
+<div class="header" id="home" style="background: url(../static/images/zld1.jpg) no-repeat center top">
     <div class="header-top">  <!--头页的上部-->
-        <a href="HomePage.html"><img src="images/logo-2.png" alt=""/></a> <!--到时候此处放logo,跳转到首页-->
+        <a href="HomePage.html"><img src="../static/images/logo-2.png" alt=""/></a> <!--到时候此处放logo,跳转到首页-->
         <h1>塞尔达传说:荒野之息</h1> <!--此处应该能改名（后端）-->
         <h2>The Legend of Zelda:Breath of the wild</h2>
 
     </div>
 
     <!--介绍页-->
-    <div class="about" id="about" style="background:url(./images/zld2.jpg) no-repeat center fixed">
+    <div class="about" id="about" style="background:url(../static/images/zld2.jpg) no-repeat center fixed">
         <div class="container">
             <div class="about-main">
                 <h3>游戏简介<span><a href="#">♥</a></span></h3>

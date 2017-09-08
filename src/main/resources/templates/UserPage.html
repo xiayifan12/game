@@ -8,15 +8,15 @@
 
     <!--下面一句表示当页面打开时先设置定时器，当时间为0时启动hideURLbar函数-->
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-    <link href="css/bootsrtap.css" rel="stylesheet" type="text/css" media="all"> <!--media="all"表示再任何设备上都套用这个css-->
-    <link href="css/style_user.css" rel="stylesheet" type="text/css" media="all">
+    <link href="../static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"> <!--media="all"表示再任何设备上都套用这个css-->
+    <link href="../static/css/style_user.css" rel="stylesheet" type="text/css" media="all">
 
     <!--字体-->
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 
-    <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="js/move-top.js"></script>
-    <script type="text/javascript" src="js/easing.js"></script>
+    <script type="text/javascript" src="../static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../static/js/move-top.js"></script>
+    <script type="text/javascript" src="../static/js/easing.js"></script>
 
     <!--
      对scroll类起作用，当点击scroll类元素时，以1000的速度将页面移动到this.hash位置
@@ -44,7 +44,7 @@
 <!--头页-->
 	<div class="header" id="home">
         <div class="header-top">  <!--头页的上部-->
-            <a href="HomePage.html"><img src="images/logo-2.png" alt=""/></a> <!--到时候此处放logo,跳转到首页-->
+            <a href="HomePage.html"><img src="../static/images/logo-2.png" alt=""/></a> <!--到时候此处放logo,跳转到首页-->
             <h2>欢迎来到</h2>
             <h1>夏一凡的博客</h1> <!--此处应该能改名（后端）-->
 
@@ -63,7 +63,7 @@
                             </ul>
                         </div>
                         <div class="clearfix"></div>
-                        <script type="text/javascript" src="js/nav.js"></script>
+                        <script type="text/javascript" src="../static/js/nav.js"></script>
 
                         <!--选中scroll时下滑-->
                         <script type="text/javascript">
@@ -108,7 +108,7 @@
 
         <div class="header-top-bottom">
             <!--跳转到#即本页面中的。about代表about类。#about就是跳转到本页中的about类那里-->
-            <a href="#about" class="scroll"><img src="images/logo-3.png" alt=""/></a> <!--下滑按钮-->
+            <a href="#about" class="scroll"><img src="../static/images/logo-3.png" alt=""/></a> <!--下滑按钮-->
         </div>
     </div>
 <!--头页结束-->
@@ -130,7 +130,7 @@
 <!--游戏页开始-->
 <div class="games" id="games">
     <div class="col-md-3 games-left">
-        <img src="images/games-1.jpg" alt=""/>    <!--需要由后端输入-->
+        <img src="../static/images/games-1.jpg" alt=""/>    <!--需要由后端输入-->
         <div class="games-bottom">
             <h4>战地1</h4>                     <!--需要由后端输入-->
             <label> </label>
@@ -141,7 +141,7 @@
     </div>
 
     <div class="col-md-3 games-left">
-        <img src="images/games-2.jpg" alt=""/>     <!--需要由后端输入-->
+        <img src="../static/images/games-2.jpg" alt=""/>     <!--需要由后端输入-->
         <div class="games-bottom">
             <h4>战地4</h4>                     <!--需要由后端输入-->
             <label> </label>
@@ -152,7 +152,7 @@
     </div>
 
     <div class="col-md-3 games-left">
-        <img src="images/games-3.jpg" alt=""/>     <!--需要由后端输入-->
+        <img src="../static/images/games-3.jpg" alt=""/>     <!--需要由后端输入-->
         <div class="games-bottom">
             <h4>FIFA17</h4>                     <!--需要由后端输入-->
             <label> </label>
@@ -163,7 +163,7 @@
     </div>
 
     <div class="col-md-3 games-left">
-        <img src="images/games-4.jpg" alt=""/>     <!--需要由后端输入-->
+        <img src="../static/images/games-4.jpg" alt=""/>     <!--需要由后端输入-->
         <div class="games-bottom">
             <h4>Arma3</h4>                     <!--需要由后端输入-->
             <label> </label>
