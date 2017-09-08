@@ -1,0 +1,296 @@
+
+h4,h5,h6,
+h1,h2,h3 {margin-top: 0;}
+
+ul, ol{margin: 0;}
+
+p {margin:0;}
+
+html,body{
+    font-family: 'Roboto',SansSerif;
+    font-size: 100%;
+    background:#fff;
+}
+
+body a{
+    transition:0.5s all;
+    -webkit-transition:0.5s all;
+    -moz-transition:0.5s all;
+    -o-transition:0.5s all;
+    -ms-transition:0.5s all;
+}
+
+/*--开始头页--*/
+.header {
+    background: url(../images/banner1.jpg) no-repeat center top;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 840px;
+    text-align:center;
+}
+
+.logo {
+    margin-bottom: 1em;
+}
+
+.h_menu4{
+    margin:0 auto;
+    width: 100%;
+    padding:15px 0;
+}
+
+.nav{
+    list-style:none;
+    *zoom: 1;
+    margin-top: 17px;
+}
+<!--导航条设置-->
+
+.nav:before,
+.nav:after {
+    content: " ";
+    display: table;
+}
+.nav:after {
+    clear: both;
+}
+
+.nav ul {
+    list-style: none;
+    width: 13em;
+    border-bottom:5px solid #0072bc;
+    z-index: 888;
+}
+
+.nav li a{
+    display:block;
+    margin: 0px 10px;
+    font-size:17px;
+    padding: 0;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.nav li:hover{
+    color:red;
+}
+
+.nav >li{
+    display:inline-block;
+    margin: 0 5px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.nav > li >a{
+    color:#fff;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+    -webkit-transform: rotateY(15deg);
+    -moz-transform: rotateY(15deg);
+    -ms-transform: rotateY(15deg);
+    transform: rotateY(15deg);
+    color:#e22e2e;
+}  /*--制造鼠标点击飘过效果--*/
+
+
+       /*--统一在各设备中的排版--*/
+    @media (max-width: 800px){
+
+    }
+    .toggleMenu {
+        background: #c29f4d;
+        font-size: 1.5em;
+    }
+    @media screen and (max-width: 640px) {
+        .toggleMenu {
+            width:100%;
+        }
+    }
+    @media screen and (max-width: 480px) {
+        .toggleMenu {
+            width:100%;
+        }
+    }
+    @media screen and (max-width: 320px) {
+        .toggleMenu {
+            width:100%;
+        }
+    }
+
+.header-left {
+    width: 97%;
+    float: left;
+}
+
+.header-top{
+    padding-top: 4%;
+}
+.header-top h2 {
+    font-size: 1.3em;
+    color: #fff;
+    letter-spacing: 2px;
+    font-weight: 700;
+    margin: 9% 0px 0px 0px;
+}
+.header-top h1 {
+    font-size: 3.2em;
+    color: #fff;
+    font-weight: 300;
+    margin: 15px 0px 0px 0px;
+    letter-spacing: 4px;
+}
+.header-top-bottom {
+    margin-left: auto;
+    margin-top: 5%;
+}
+
+.fixed{
+    height:90px;
+    position: fixed;
+    top: 0;
+    z-index:2;
+    width: 99%;
+    margin: 0 auto;
+    left:0;
+    background:#272727;
+}
+/*--头页结束--*/
+/*--介绍页开始--*/
+.about-main {
+    text-align:center;
+    margin-top: 0%;
+}
+.about{
+    background:url(../images/banner2.jpg) no-repeat center fixed;/*--no-repeat center fixed可以固定背景图片--*/
+    background-size:100% 100%;
+    min-height: 720px;
+}
+
+.about-top{
+    position:relative;
+    top:90px;
+    z-index:1;
+    margin: auto;
+    height:300px;
+    width:800px;
+    background:#333333;
+    padding: 5em 0px;
+    margin-top: 3%;
+    opacity:0.9;
+}
+.about-main h3 {
+    position:relative;
+    top:50px;
+    z-index:1;
+    color: #fff;
+    font-size: 1.8em;
+    letter-spacing: 2px;
+    font-weight: 700;
+    margin: 0%;
+}
+/*--介绍页结束--*/
+/*--游戏页开始--*/
+.games-left{
+    float:left;
+    width:auto;
+}
+.games-bottom {
+    position: relative;
+    top:-100px;
+    left:0px;
+    text-align: center;
+}
+.games-bottom h4 {
+    color: #fff;
+    font-size: 1.25em;
+    font-weight: 100;
+    letter-spacing: 2px;
+    margin: 0;
+}
+.games-bottom label {
+    width: 35%;
+    height: 1px;
+    background: rgba(234, 208, 208, 0.5);
+}
+.g-btn {
+    margin-top: 1.5em;
+}
+.games-bottom p {
+    color: #d79292;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 700;
+    margin-top: 2px;
+}
+.g-btn a {
+    color: #fff;
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-weight: 100;
+    background: rgba(255, 255, 255, 0.2);
+    outline: none;
+    padding: 12px 21px;
+    font-family: 'Source Sans Pro', sans-serif;
+    border: 1px solid #fff;
+    border-radius: 2.3em;
+    -webkit-border-radius: 2.3em;
+    -moz-border-radius: 2.3em;
+    -o-border-radius: 2.3em;
+    -ms-border-radius: 2.3em;
+}
+.g-btn a:hover{
+    color: #ffffff;
+    background:rgba(226, 46, 46, 0.3);
+    border: 1px solid #e22e2e;
+    text-decoration: none;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+}
+/*--游戏页结束--*/
+
+/*--博客页开始--*/
+.blog{
+    background: url(../images/blog-banner.jpg) no-repeat;
+    background-size:100% 100%;
+    min-height:700px;
+}
+.blog-main{
+    margin-top: 8%;
+    text-align:center;
+}
+
+.b-btn a {
+    color: #e1e1e1;
+    font-size: 22px;
+    font-weight: 100;
+    letter-spacing: 3px;
+    outline: none;
+}
+.b-btn a:hover{
+    color: #e22e2e;
+    font-size: 24px;
+    text-decoration: none;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+}
+.b-btn {
+    margin-top: 4em;
+}
+

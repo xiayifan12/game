@@ -1,0 +1,138 @@
+h4,h5,h6,
+h1,h2,h3 {margin-top: 0;}
+
+ul, ol{margin: 0;}
+
+p {margin:0;}
+
+html,body{
+    font-family: 'Roboto',SansSerif;
+    font-size: 100%;
+    background:#fff;
+}
+
+body a{
+    transition:0.5s all;
+    -webkit-transition:0.5s all;
+    -moz-transition:0.5s all;
+    -o-transition:0.5s all;
+    -ms-transition:0.5s all;
+}
+
+/*--开始头页--*/
+.header {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 840px;
+    text-align:center;
+}
+
+.logo {
+    margin-bottom: 1em;
+}
+
+/*--介绍页开始--*/
+.about-main {
+    text-align:center;
+    margin-top: 0%;
+}
+.about{
+    background-size:100% 100%;
+    min-height: 720px;
+}
+
+
+.about-main span a{
+    text-decoration: inherit;
+}
+
+
+.about-top{
+    position:relative;
+    top:90px;
+    z-index:1;
+    margin: auto;
+    height:auto;
+    width:650px;
+    background:#333333;
+    padding: 5em 0px;
+    margin-top: 3%;
+    opacity:0.9;
+    color: #ffffff;
+    float: left;
+    font-family:华文楷体;
+}
+
+.about-type{
+    position:relative;
+    float: right;
+    background: #333333;
+    opacity: 0.9;
+    width: 300px;
+    height: auto;
+    padding: 5em 0px;
+    top:90px;
+    margin-top: 3%;
+    color: #ffffff;
+    font-family: 华文细黑;
+
+}
+.about-list ul li{
+    float: left;
+    display:block;
+    list-style: none;
+    padding-left:0px;
+    width: 250px;
+}
+
+
+.about-main h3 {
+    float: left;
+    position:relative;
+    top:50px;
+    z-index:1;
+    color: #fff;
+    font-size: 1.8em;
+    letter-spacing: 2px;
+    font-weight: 700;
+    margin: 0%;
+}
+
+
+.reading{
+    position:relative;
+    float: left;
+
+    width: 1000px;
+    height: auto;
+    background: #333333;
+    opacity: 0.9;
+    margin: 10%;
+}
+
+
+.reading h3{
+    float: left;
+    position:relative;
+    color: #fff;
+    width: 20px;
+    margin: 0 auto;
+    line-height: 40px;
+    font-size: 1.8em;
+    letter-spacing: 5px;
+    font-family:华文仿宋;
+
+}
+
+.reading ul li a{
+    top:25px;
+    display:block;
+    list-style: none;
+    color: #fff;
+    position:relative;
+    text-decoration: inherit;
+    margin-bottom:20px
+}
+

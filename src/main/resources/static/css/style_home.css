@@ -1,0 +1,149 @@
+h4,h5,h6,
+h1,h2,h3 {margin-top: 0;}
+
+ul, ol{margin: 0;}
+
+p {margin:0;}
+
+html,body{
+    background:url(../images/homeBack.jpg) no-repeat center top;
+    font-family: 'Roboto',SansSerif;
+    font-size: 100%;
+}
+
+body a{
+    transition:0.5s all;
+    -webkit-transition:0.5s all;
+    -moz-transition:0.5s all;
+    -o-transition:0.5s all;
+    -ms-transition:0.5s all;
+}
+
+/*--开始头页--*/
+.header {
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 240px;
+    text-align:center;
+}
+
+.logo {
+    margin-bottom: 1em;
+}
+
+/*game*/
+/*--games--*/
+.games h3{
+    margin: 0 0 0.5em;
+    font-size: 3.5em;
+    color: #000;
+    font-family: 'Philosopher-Bold';
+    text-align:center;
+}
+
+
+.games {
+    padding: 4em 0;
+}
+
+.da-thumbs {
+    list-style: none;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+.da-thumbs li {
+    float: left;
+    margin: 0.4%;
+    background: #333;
+    padding: 8px;
+    position: relative;
+    box-shadow: 0 1px 3px rgba(221, 221, 221, 1);
+    width: 32.4%;
+}
+.da-thumbs li a,
+.da-thumbs li a img {
+    display: block;
+    position: relative;
+    width: 100%;
+}
+.da-thumbs li a {
+    overflow: hidden;
+}
+.da-thumbs li a div {
+    position: absolute;
+    background: #333333;
+    width: 100%;
+    opacity: 0.9;
+    height: 100%;
+}
+.da-thumbs li a div span {
+    display: block;
+    padding: 10px 0;
+    margin: 10px 20px 0px 20px;
+    font-weight: normal;
+    text-transform: capitalize;
+    color: rgba(255,255,255,0.9);
+    text-align: center;
+    font-size: 1.1em;
+}
+.da-thumbs li a div  h5 {
+    color: #FFF;
+    font-size: 2em;
+    margin: 2.5em 0 0 0;
+    font-family: 'Philosopher-Bold';
+    text-align: center;
+}
+
+
+.article h3{
+    margin: 0 0 0.5em;
+    font-size: 3.5em;
+    color: #000;
+    font-family: 'Philosopher-Bold';
+    text-align:center;
+}
+
+
+.da-thumbs1 {
+    list-style: none;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+.da-thumbs1 li {
+    float: left;
+    margin: 0.4%;
+    background: #333;
+    padding: 8px;
+    position: relative;
+    box-shadow: 0 1px 3px rgba(221, 221, 221, 1);
+    width: 32.4%;
+}
+.da-thumbs1 li a,
+.da-thumbs1 li a img {
+    display: block;
+    position: relative;
+    width: 100%;
+}
+.da-thumbs1 li a {
+    overflow: hidden;
+}
+.da-thumbs1 li a div {
+    position: absolute;
+    background: #333333;
+    opacity: 0.9;
+    width: 100%;
+    height: 100%;
+}
+
+.da-thumbs1 li a div  h5 {
+    color: #FFF;
+    font-size: 1.3em;
+    margin: 2.5em 0 0 0;
+    font-family: 'Philosopher-Bold';
+    text-align: center;
+}
