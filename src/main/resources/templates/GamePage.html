@@ -28,7 +28,7 @@
     </script>
 </head>
 <body>
-<div class="header" id="home" style="background: url(../static/images/zld1.jpg) no-repeat center top" th:style="'background:url(' + @{/images/zld1.jpg} + ')no-repeat center top'"    >
+<div class="header" id="home" style="background: url(../static/images/zld1.jpg) no-repeat center top" th:style="'background:url(' + @{/images/{image}(image=${game.banner})} + ')no-repeat center top'"    >
     <div class="header-top">  <!--头页的上部-->
         <a href="HomePage.html"><img src="../static/images/logo-2.png" th:src="@{/images/logo-2.png}" alt=""/></a> <!--到时候此处放logo,跳转到首页-->
         <h1 th:text="${game.name}">塞尔达传说:荒野之息</h1> <!--此处应该能改名（后端）-->
@@ -37,7 +37,7 @@
     </div>
 
     <!--介绍页-->
-    <div class="about" id="about" style="background:url(../static/images/zld2.jpg) no-repeat center fixed" th:style="'background:url(' + @{/images/zld2.jpg} + ')no-repeat center fixed'">
+    <div class="about" id="about" style="background:url(../static/images/zld2.jpg) no-repeat center fixed" th:style="'background:url(' + @{/images/{image}(image=${game.image})} + ')no-repeat center fixed'">
         <div class="container">
             <div class="about-main">
                 <h3>游戏简介<span><a href="#">♥</a></span></h3>
@@ -51,10 +51,10 @@
                            <div class="about-type ">
                                <div class="about-list">
                                     <ul>
-                                        <li><b>游戏类型：</b><span th:text="${game.type}">角色扮演</span></li>
+                                        <li><b>游戏类型：</b><span th:text="${content[game.type].context}">角色扮演</span></li>
                                         <li><b>发行公司：</b><span th:text="${game.copyright}">任天堂</span></li>
                                         <li><b>发售平台：</b><span th:text="${game.platform}">Nintendo Switch</span></li>
-                                        <li><b>联网类型：</b><span th:text="${game.connection}">单机游戏</span></li>
+                                        <li><b>联网类型：</b><span th:if="${game.connection==0}">单机游戏</span> <span th:if="${game.connection==1}">网络游戏</span></li>
                                         <li><b>游戏版本：</b><span th:text="${game.version}">DLC1:剑之试炼</span></li>
                                         <li><b>发售年份：</b><span th:text="${#dates.format(game.time, 'yyyy-MM-dd')}">2017</span></li>
                                     </ul>
