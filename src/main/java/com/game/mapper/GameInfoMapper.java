@@ -11,6 +11,11 @@ import java.util.List;
 @Mapper
 public interface GameInfoMapper {
 
+
+    @Results({
+        @Result(property = "describe",column = "describe")
+    })
+
     @Insert("insert into gameinfo(name, enname, platform, version, connection, describe, copyright, type, website, image, time) values" +
             "(#{name}, #{enname}, #{platform}, #{version}, #{connection}, #{describe}, #{copyright}, #{type}, #{website}, #{image}, #{time})")
     boolean insertGameInfo(String name, String enname, String platform, String version, int connection, String describe, String copyright, int type, String website, String image, Date time);
