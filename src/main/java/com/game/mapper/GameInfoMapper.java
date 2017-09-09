@@ -16,9 +16,9 @@ public interface GameInfoMapper {
         @Result(property = "describe",column = "describe")
     })
 
-    @Insert("insert into gameinfo(name, enname, platform, version, connection, describe, copyright, type, website, image, time) values" +
-            "(#{name}, #{enname}, #{platform}, #{version}, #{connection}, #{describe}, #{copyright}, #{type}, #{website}, #{image}, #{time})")
-    boolean insertGameInfo(String name, String enname, String platform, String version, int connection, String describe, String copyright, int type, String website, String image, Date time);
+    @Insert("insert into gameinfo(name, enname, platform, version, connection, describe, copyright, type, website, image, time,banner) values" +
+            "(#{name}, #{enname}, #{platform}, #{version}, #{connection}, #{describe}, #{copyright}, #{type}, #{website}, #{image}, #{time},#{banner)")
+    boolean insertGameInfo(String name, String enname, String platform, String version, int connection, String describe, String copyright, int type, String website, String image, Date time,String banner);
 
     @Delete("delete gameinfo where id = #{id}")
     boolean deleteGameInfoById(int id);

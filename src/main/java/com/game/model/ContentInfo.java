@@ -4,7 +4,7 @@ public class ContentInfo {
     private int id;
     private int type;
     private String context;
-    private int order;
+    private int queue;
 
     public int getId() {
         return id;
@@ -16,6 +16,14 @@ public class ContentInfo {
 
     public int getType() {
         return type;
+    }
+
+    public int getQueue() {
+        return queue;
+    }
+
+    public void setQueue(int queue) {
+        this.queue = queue;
     }
 
     public void setType(int type) {
@@ -30,11 +38,5 @@ public class ContentInfo {
         this.context = context;
     }
 
-    public int getOrder() {
-        return order;
-    }
 
-    public void setOrder(int order) {
-        this.order = order;
-    }
 }

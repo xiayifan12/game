@@ -14,7 +14,17 @@ public class GameInfo {
     private  int connection;
     private  String website;
     private  String image;
+    private String banner;
     private Date time;
+
+
+    public String getBanner() {
+        return banner;
+    }
+
+    public void setBanner(String banner) {
+        this.banner = banner;
+    }
 
     public Date getTime() {
         return time;
