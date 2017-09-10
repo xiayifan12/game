@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+       <ul th:each="game :${game}">
+           <li th:text="${game.name}"></li>
+       </ul>
+
+       <ul th:each="type :${type}">
+           <li th:text="${type.context}"></li>
+       </ul>
+
+       <ul th:each="plat :${plat}">
+           <li th:text="${plat.context}"></li>
+       </ul>
+
+       <ul th:each="net :${net}">
+           <li th:text="${net.context}"></li>
+       </ul>
+
+       <ul th:each="time :${time}">
+           <li th:text="${time.context}"></li>
+       </ul>
+
+
+
+
+</body>
+</html>

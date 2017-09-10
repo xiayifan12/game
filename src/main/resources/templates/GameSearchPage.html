@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta charset="UTF-8">
+    <title>HomePage</title>
+
+
+    <!--下面一句表示当页面打开时先设置定时器，当时间为0时启动hideURLbar函数-->
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+    <link href="../static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"> <!--media="all"表示再任何设备上都套用这个css-->
+    <link href="../static/css/style_Gserch.css" rel="stylesheet" type="text/css" media="all">
+
+    <!--字体-->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic'
+          rel='stylesheet' type='text/css'>
+
+    <script type="text/javascript" src="../static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../static/js/move-top.js"></script>
+    <script type="text/javascript" src="../static/js/easing.js"></script>
+
+    <script src="../static/js/modernizr.custom.97074.js"></script>
+    <script type="text/javascript" src="../static/js/jquery.hoverdir.js"></script>
+
+</head>
+<body>
+
+<div class="header" id="home">
+    <div class="header-top">  <!--头页的上部-->
+        <a href="HomePage.html"><img src="../static/images/logo-2.png" alt=""/></a> <!--到时候此处放logo,跳转到首页-->
+        <h1>SKY FUCKER</h1> <!-- 网站名  需要更换字体-->
+    </div>
+</div>
+
+<div class="selectBanner">
+    <div class="container">
+        <form class="select">
+            <div class="gameType">
+                <h4>游戏类型：</h4>
+                <ul>
+                    <li><input name="type" type="radio" value=0/>ALL</li>
+                    <li><input name="type" type="radio" value=1/>角色扮演</li>
+                    <li><input name="type" type="radio" value=2/>动作冒险</li>
+                    <li><input name="type" type="radio" value=3/>FPS</li>
+                    <li><input name="type" type="radio" value=4/>策略战争</li>
+                    <li><input name="type" type="radio" value=5/>即时战略</li>
+                    <li><input name="type" type="radio" value=6/>TPS</li>
+                    <li><input name="type" type="radio" value=6/>卡牌游戏</li>
+                    <li><input name="type" type="radio" value=6/>休闲益智</li>
+                    <li><input name="type" type="radio" value=6/>运动竞速</li>
+                    <li><input name="type" type="radio" value=6/>文字冒险</li>
+                </ul>
+            </div>
+
+
+            <div class="gamePlat">
+                <h4>游戏平台：</h4>
+                <ul>
+                    <li><input name="type" type="radio" value=0/>ALL</li>
+                    <li><input name="type" type="radio" value=1/>PC</li>
+                    <li><input name="type" type="radio" value=2/>PS4</li>
+                    <li><input name="type" type="radio" value=3/>Switch</li>
+                    <li><input name="type" type="radio" value=4/>PC</li>
+                    <li><input name="type" type="radio" value=5/>Xbox</li>
+                    <li><input name="type" type="radio" value=6/>Mobile</li>
+                </ul>
+            </div>
+
+            <div class="gameNet">
+                <h4>联网类型：</h4>
+                <ul>
+                    <li><input name="type" type="radio" value=0/>ALL</li>
+                    <li><input name="type" type="radio" value=1/>联网游戏</li>
+                    <li><input name="type" type="radio" value=2/>单机游戏</li>
+                </ul>
+            </div>
+
+            <div class="gameTime">
+                <h4>发售时间：</h4>
+                <ul>
+                    <li><input name="type" type="radio" value=0/>ALL</li>
+                    <li><input name="type" type="radio" value=1/>2017</li>
+                    <li><input name="type" type="radio" value=2/>2016</li>
+                    <li><input name="type" type="radio" value=2/>2015</li>
+                    <li><input name="type" type="radio" value=2/>2014</li>
+                    <li><input name="type" type="radio" value=2/>2013</li>
+
+                </ul>
+            </div>
+
+
+
+
+        </form>
+
+
+    </div>
+
+
+
+</div>
+
+
+</body>
+</html>
