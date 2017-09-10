@@ -4,6 +4,7 @@ import com.game.model.ArticleInfo;
 import org.apache.ibatis.annotations.*;
 //import org.apache.ibatis.annotations.Result;
 //import org.apache.ibatis.annotations.Results;
+import com.game.util.SqlCreator;
 
 import java.util.Date;
 import java.util.List;
@@ -37,6 +38,9 @@ public interface ArticleInfoMapper {
 
     @Update("update articleinfo set content = #{content} and m_date = #{mTime} where id = #{id}")
     boolean updateArticleInfoById(String content, int id, Date mTime);
+
+    @SelectProvider(type = SqlCreator.class ,method = "CreateSearchSql")
+    List<ArticleInfo> getArticleInfoBySearch(int type, int time);
 }
 
 
