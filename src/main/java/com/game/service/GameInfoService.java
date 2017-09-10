@@ -29,4 +29,8 @@ public class GameInfoService {
 
     public List<GameInfo> getGameDetailRandom(int num){return gameInfoMapper.getGameInfoRandom(num); }
 
+    public void addGameInfo(){ //没写呢！！！！
+
+    }
+
 }

@@ -10,15 +10,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.multipart.MultipartFile;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
+
 
 /**
  * Created by xiayifan on 2017/9/8.
  */
 @Controller
 public class GameInfoController {
+
+    public static final String ROOT = "/images/";
 
     @Autowired
     GameInfoService gameInfoService;
@@ -55,6 +62,36 @@ public class GameInfoController {
         mapper.addAttribute("game",gameInfos);
 
         return "debug";
+    }
+
+
+    @PostMapping("/game/add")
+    public String addGameInfo(@RequestParam("image") MultipartFile image,
+                              @RequestParam("banner") MultipartFile banner,
+                              @RequestParam("name") String name,
+                              @RequestParam("enName")String enName,
+                              @RequestParam("version")String version,
+                              @RequestParam("platform")String platform,
+                              @RequestParam("describe")String describe,
+                              @RequestParam("copyright")String copyright,
+                              @RequestParam("connection")int connection,
+                              @RequestParam("type")int type){
+
+
+        String imageName = enName+"2.jpg";
+        String bannerName = enName+"1.jpg";
+
+        try {
+            Files.copy(image.getInputStream(), Paths.get(ROOT,imageName));
+            Files.copy(banner.getInputStream(), Paths.get(ROOT,bannerName));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        gameInfoService.addGameInfo();//没写呢！！！！  做一个年份的样式！！！！！！
+
+
+        return "";
     }
 
 

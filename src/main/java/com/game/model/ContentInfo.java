@@ -1,5 +1,6 @@
 package com.game.model;
 
+
 public class ContentInfo {
     private int id;
     private int type;
