@@ -34,7 +34,7 @@ public class GameInfoController {
     }
 
     @GetMapping("/game")
-    public String getGameSearchPage(){ 
+    public String getGameSearchPage(){
 
 
         return "GameSearchPage.html";
