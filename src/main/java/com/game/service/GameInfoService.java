@@ -21,10 +21,12 @@ public class GameInfoService {
         return gameInfoMapper.getGameInfoById(id);
     }
 
-    public List<GameInfo> getGameSearchInfo(int type,int platform,int net,int time){
-        List<GameInfo> gameInfos = gameInfoMapper.getGameInfoBySearch(type,platform,net,time);
+    public List<GameInfo> getGameSearchInfo(int type,int platform,int net,int time,int page){
+        List<GameInfo> gameInfos = gameInfoMapper.getGameInfoBySearch(type,platform,net,time,page);
 
         return gameInfos;
     }
+
+    public List<GameInfo> getGameDetailRandom(int num){return gameInfoMapper.getGameInfoRandom(num); }
 
 }

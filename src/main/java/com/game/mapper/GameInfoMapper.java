@@ -40,5 +40,5 @@ public interface GameInfoMapper {
     List<GameInfo> getGameInfoRandom(int num);
 
     @SelectProvider(type = SqlCreator.class ,method = "CreateSearchSql")
-    List<GameInfo> getGameInfoBySearch(int type,int platform,int net,int time);
+    List<GameInfo> getGameInfoBySearch(int type,int platform,int net,int time,int page);
 }
