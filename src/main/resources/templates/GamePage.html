@@ -51,7 +51,7 @@
                            <div class="about-type ">
                                <div class="about-list">
                                     <ul>
-                                        <li><b>游戏类型：</b><span th:text="${content[game.type].context}">角色扮演</span></li>
+                                        <li><b>游戏类型：</b><span th:text="${content.context}">角色扮演</span></li>
                                         <li><b>发行公司：</b><span th:text="${game.copyright}">任天堂</span></li>
                                         <li><b>发售平台：</b><span th:text="${game.platform}">Nintendo Switch</span></li>
                                         <li><b>联网类型：</b><span th:if="${game.connection==0}">单机游戏</span> <span th:if="${game.connection==1}">网络游戏</span></li>
