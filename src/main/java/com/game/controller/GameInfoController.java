@@ -32,4 +32,18 @@ public class GameInfoController {
         mapper.addAttribute("game",gameInfo);
         return "GamePage.html";
     }
+
+    @GetMapping("/game")
+    public String getGameSearchPage(){
+
+
+        return "GameSearchPage.html";
+    }
+
+    @GetMapping("/game/{platform}/{type}/{net}/{language}")
+    public String getGameSearchResult(){
+
+
+        return "GameSearchPage.html";
+    }
 }
