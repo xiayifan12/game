@@ -27,7 +27,8 @@ public class GameInfoController {
     public String getGameDetail(@PathVariable int id , Model mapper){
 
         GameInfo gameInfo = gameInfoService.getGameDetailById(id);
-        mapper.addAttribute("content",contentInfoService.getContentDetailByType(0));
+        ContentInfo contentInfo = contentInfoService.getContentDetailByType(gameInfo.getType());
+        mapper.addAttribute("content",contentInfo);
         mapper.addAttribute("game",gameInfo);
         return "GamePage.html";
     }
