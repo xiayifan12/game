@@ -3,8 +3,8 @@ package com.game.controller;
 
 import com.game.model.ContentInfo;
 import com.game.model.GameInfo;
-import com.game.service.ContentInfoService;
 import com.game.service.GameInfoService;
+import com.game.service.ContentInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,7 +30,8 @@ public class GameInfoController {
     public String getGameDetail(@PathVariable int id , Model mapper){
 
         GameInfo gameInfo = gameInfoService.getGameDetailById(id);
-        mapper.addAttribute("content",contentInfoService.getContentDetailByType(0));
+        ContentInfo contentInfo = contentInfoService.getContentDetailByType(gameInfo.getType());
+        mapper.addAttribute("content",contentInfo);
         mapper.addAttribute("game",gameInfo);
         return "GamePage.html";
     }
@@ -41,14 +42,14 @@ public class GameInfoController {
                                                          @RequestParam(name = "net",required=false,defaultValue = "0")int net,
                                                            @RequestParam(name = "time",required=false,defaultValue = "0")int time ){
 
-        List<ContentInfo> gameTypeInfo = contentInfoService.getContentDetailByType(0) ;
-        mapper.addAttribute("type",gameTypeInfo);
-        List<ContentInfo> gamePlatInfo = contentInfoService.getContentDetailByType(1);
-        mapper.addAttribute("plat",gamePlatInfo);
-        List<ContentInfo> gameNetInfo = contentInfoService.getContentDetailByType(2);
-        mapper.addAttribute("net",gameNetInfo);
-        List<ContentInfo> gameTimeInfo = contentInfoService.getContentDetailByType(3);
-        mapper.addAttribute("time",gameTimeInfo);
+//        List<ContentInfo> gameTypeInfo = contentInfoService.getContentDetailByType(0) ;
+//        mapper.addAttribute("type",gameTypeInfo);
+//        List<ContentInfo> gamePlatInfo = contentInfoService.getContentDetailByType(1);
+//        mapper.addAttribute("plat",gamePlatInfo);
+//        List<ContentInfo> gameNetInfo = contentInfoService.getContentDetailByType(2);
+//        mapper.addAttribute("net",gameNetInfo);
+//        List<ContentInfo> gameTimeInfo = contentInfoService.getContentDetailByType(3);
+//        mapper.addAttribute("time",gameTimeInfo);
 
         List<GameInfo> gameInfos = gameInfoService.getGameSearchInfo(type,platform,net,time);
         mapper.addAttribute("game",gameInfos);
@@ -56,5 +57,19 @@ public class GameInfoController {
         return "debug";
     }
 
+    /*
+    * public String getGameSearchPage(){
 
+
+        return "GameSearchPage.html";
+    }
+
+    @GetMapping("/game")
+    public String getGameSearchResult(){
+
+
+        return "GameSearchPage.html";
+    }
+
+    * */
 }
