@@ -4,9 +4,9 @@ import org.apache.ibatis.annotations.Select;
 
 public interface LikeInfo {
 
-    @Select("select user_id from like where game_id = #{gameId}")
+    @Select("select user_id from favorite where game_id = #{gameId}")
     int getUserIdByGameId(int gameId);
 
-    @Select("select game_id from like where user_id = #{userId}")
+    @Select("select game_id from favorite where user_id = #{userId}")
     int getGameIdByUserId(int userId);
 }

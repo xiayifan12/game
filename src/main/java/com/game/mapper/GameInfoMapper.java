@@ -3,6 +3,7 @@ package com.game.mapper;
 //  Created by xiayifan on 2017/9/8.
 
 import com.game.model.GameInfo;
+import com.game.util.SqlCreator;
 import org.apache.ibatis.annotations.*;
 
 import java.util.Date;
@@ -34,4 +35,10 @@ public interface GameInfoMapper {
 
     @Update("update gameinfo set version = #{version} where id = #{id}")
     boolean updateGameInfoById(String version, int id);
+
+    @Select("SELECT * from gameinfo limit #{num}")
+    List<GameInfo> getGameInfoRandom(int num);
+
+    @SelectProvider(type = SqlCreator.class ,method = "CreateSearchSql")
+    List<GameInfo> getGameInfoBySearch(int type,int platform,int net,int time);
 }
