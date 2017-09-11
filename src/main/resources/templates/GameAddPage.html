@@ -1,5 +1,7 @@
 <!doctype html>
 <html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Classy Job Application Form Flat Responsive widget Template :: w3layouts</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,18 +12,20 @@
 <link href='//fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 <!-- /font files -->
 <!-- css files -->
-<link href="../static/css/style_AddGame.css" rel='stylesheet' type='text/css' media="all" />
-<link rel="stylesheet" href="../static/css/j-forms.css">
+<link href="../static/css/style_AddGame.css" th:href="@{/css/style_AddGame.css}" rel='stylesheet' type='text/css' media="all" />
+<link rel="stylesheet" href="../static/css/j-forms.css" th:href="@{/css/j-forms.css}">
 
 <!-- /css files -->
-<script type="text/javascript" src="../static/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="../static/js/jquery-2.1.4.min.js" th:src="@{/js/jquery-2.1.4.min.js}"></script>
+
+
 
 </head>
 <body>
 <h1 class="header-w3ls">添加新的游戏</h1>
 <div class="content-w3ls">
 	<div class="form-w3ls">
-		<form action="#" method="post" enctype="multipart/form-data">
+		<form action="#" method="post" id="formP" th:action="@{/game/add/up}" enctype="multipart/form-data">
 			<div class="content-wthree1">
 				<div class="grid-agileits1">
 					<div class="form-control"> 
@@ -45,6 +49,13 @@
 						<label class="header">游戏简介 <span>*</span></label>
 						<input type="text" id="name" name="describe" placeholder="游戏简介" title="Please enter the describe" required="">
 					</div>
+					<div class="form-control">
+						<label class="header">发售时间 <span>*</span></label>
+						<input type="number" id="name" name="year"  placeholder="年份" title="Please enter the year" required="">
+						<input type="number" id="name" name="month" placeholder="月份" title="Please enter the month" required="">
+						<input type="number" id="name" name="day" placeholder="具体天数" title="Please enter the day" required="">
+					</div>
+
 				</div>
 			</div>
 				<div class="form-control">
@@ -65,7 +76,7 @@
 				<div class="form-control">
 				<div class="main-row">
 						<label class="header">请选择联网类型<span>*</span></label>
-							<select name="country">
+							<select name="connection">
 								<option value="none" selected="" disabled="">联网类型</option>
 								<option value="0">单机游戏</option>
 								<option value="1">联网游戏</option>
@@ -74,14 +85,34 @@
 					</div>
 				</div>
 
+			<div class="form-control">
+				<div class="main-row">
+					<label class="header">请选择游戏类型<span>*</span></label>
+					<select name="type">
+						<option value="none" selected="" disabled="">游戏类型</option>
+						<option value="1">角色扮演</option>
+						<option value="2">动作冒险</option>
+						<option value="3">FPS</option>
+						<option value="4">策略战争</option>
+						<option value="5">即时战略</option>
+						<option value="6">TPS</option>
+						<option value="7">卡牌游戏</option>
+						<option value="8">休闲益智</option>
+						<option value="9">运动竞速</option>
+						<option value="10">文字冒险</option>
+					</select>
+					<i></i>
+				</div>
+			</div>
+
 
 				<div class="w3ls-btn">
 					<div class="contact-forms">
-					<label class="rating">上传游戏图片1</label>
+					<label class="rating" id="banner">上传游戏图片1</label>
 						<label class="input append-small-btn">
 								<div class="upload-btn">
 									上传
-									<input type="file" name="file1" onchange="document.getElementById('file1_input').value = this.value;">
+									<input type="file" name="banner" onchange="document.getElementById('banner').innerHTML = '上载成功';">
 								</div>
 						</label>
 
@@ -93,11 +124,11 @@
 
 			<div class="w3ls-btn">
 				<div class="contact-forms">
-					<label class="rating">上传游戏图片2</label>
+					<label class="rating" id="image" >上传游戏图片2</label>
 					<label class="input append-small-btn">
-						<div class="upload-btn">
+						<div class="upload-btn" >
 							上传
-							<input type="file" name="file1" onchange="document.getElementById('file1_input').value = this.value;">
+							<input type="file" name="image"  onchange="document.getElementById('image').innerHTML = '上载成功';">
 						</div>
 					</label>
 

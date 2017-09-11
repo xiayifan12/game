@@ -10,25 +10,39 @@ import java.util.Date;
 import java.util.List;
 
 @Mapper
+
 public interface GameInfoMapper {
 
 
-    @Results({
-        @Result(property = "describe",column = "describe")
-    })
 
-    @Insert("insert into gameinfo(name, enname, platform, version, connection, describe, copyright, type, website, image, time,banner) values" +
-            "(#{name}, #{enname}, #{platform}, #{version}, #{connection}, #{describe}, #{copyright}, #{type}, #{website}, #{image}, #{time},#{banner)")
-    boolean insertGameInfo(String name, String enname, String platform, String version, int connection, String describe, String copyright, int type, String website, String image, Date time,String banner);
+    @Insert("insert into gameinfo(name,enname,platform,game_version,g_connection,g_describe,copyright,type_id,image,game_date,banner) values" +
+            "(#{name},#{enName},#{platform},#{version},#{connection},#{describe},#{copyright},#{type},#{imageName},#{date},#{bannerName})")
+    boolean insertGameInfo(@Param("name") String name,@Param("enName") String enName,@Param("platform") String platform,@Param("version") String version,@Param("connection") int connection,@Param("describe") String describe,@Param("copyright") String copyright,@Param("type") int type,@Param("imageName") String imageName,@Param("date") Date date,@Param("bannerName") String bannerName);
 
     @Delete("delete gameinfo where id = #{id}")
     boolean deleteGameInfoById(int id);
 
     @Select("SELECT * FROM gameinfo where id = #{id}")
+    @Results({
+            @Result(property = "enName",column = "enname"),
+            @Result(property = "version",column = "game_version"),
+            @Result(property = "type", column = "type_id"),
+            @Result(property = "time",column = "game_date"),
+            @Result(property = "connection" ,column = "g_connection"),
+            @Result(property = "describe" , column = "g_describe")
+    })
     GameInfo getGameInfoById(int id);
 
-    @Select("SELECT * FROM gameinfo where id = #{name}")
-    GameInfo getGameInfoByName(int name);
+    @Select("SELECT * FROM gameinfo where name = #{name}")
+    @Results({
+            @Result(property = "enName",column = "enname"),
+            @Result(property = "version",column = "game_version"),
+            @Result(property = "type", column = "type_id"),
+            @Result(property = "time",column = "game_date"),
+            @Result(property = "connection" ,column = "g_connection"),
+            @Result(property = "describe" , column = "g_describe")
+    })
+    GameInfo getGameInfoByName(String name);
 
     @Select("SELECT * FROM gameinfo where type = #{type}")
     List<GameInfo> getGameInfoByType(int type);
@@ -36,9 +50,14 @@ public interface GameInfoMapper {
     @Update("update gameinfo set version = #{version} where id = #{id}")
     boolean updateGameInfoById(String version, int id);
 
-    @Select("SELECT * from gameinfo limit #{num}")
-    List<GameInfo> getGameInfoRandom(int num);
+    @Select("SELECT * from gameinfo limit #{rnum},#{num}")
+    List<GameInfo> getGameInfoRandom(@Param("rnum") int rnum,@Param("num") int num);
 
     @SelectProvider(type = SqlCreator.class ,method = "CreateSearchSql")
     List<GameInfo> getGameInfoBySearch(int type,int platform,int net,int time,int page);
+
+    @Select("SELECT count(*) from gameinfo")
+    Integer getCountGameInfo();
+
+
 }
