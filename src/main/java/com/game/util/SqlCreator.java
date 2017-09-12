@@ -10,7 +10,7 @@ package com.game.util;
             if(platform!=0) sql = sql + "and platform=" + platform+" ";
             if(net!=0) sql = sql + "and net=" + net+" ";
             if(time!=0) sql = sql + "and time=" + time+" ";
-            sql = sql+" limit " +page+",100000";
+            sql = sql+" limit " +page+",3";
             return sql;
     }
 

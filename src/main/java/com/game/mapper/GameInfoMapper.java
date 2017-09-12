@@ -54,6 +54,14 @@ public interface GameInfoMapper {
     List<GameInfo> getGameInfoRandom(@Param("rnum") int rnum,@Param("num") int num);
 
     @SelectProvider(type = SqlCreator.class ,method = "CreateSearchSql")
+    @Results({
+            @Result(property = "enName",column = "enname"),
+            @Result(property = "version",column = "game_version"),
+            @Result(property = "type", column = "type_id"),
+            @Result(property = "time",column = "game_date"),
+            @Result(property = "connection" ,column = "g_connection"),
+            @Result(property = "describe" , column = "g_describe")
+    })
     List<GameInfo> getGameInfoBySearch(int type,int platform,int net,int time,int page);
 
     @Select("SELECT count(*) from gameinfo")

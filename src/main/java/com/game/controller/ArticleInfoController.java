@@ -1,15 +1,14 @@
 package com.game.controller;
 
-import com.game.model.ContentInfo;
 import com.game.model.ArticleInfo;
 import com.game.service.ArticleInfoService;
 import com.game.service.ContentInfoService;
+import com.game.util.ArticleForm;
+import com.game.util.StatusJson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -50,4 +49,32 @@ public class ArticleInfoController {
 
         return "ArticlePage.html";
     }
+
+    @GetMapping("/article/add")
+    public String postArticle(){
+        return "ArticleEdit";
+    }
+
+    @PostMapping("/article/add/up")
+    @ResponseBody
+    public StatusJson addNewArticle (@RequestBody ArticleForm data){
+        StatusJson statusJson = new StatusJson();
+
+        if(data.field!=null&&data.title!=null) {
+            statusJson.status=1;
+//            articleInfoService.
+
+        }
+        else {
+            statusJson.status=0;
+        }
+        return statusJson;
+
+    }
+
+
+
+
+
+
 }

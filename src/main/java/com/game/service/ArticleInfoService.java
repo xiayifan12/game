@@ -24,4 +24,6 @@ public class ArticleInfoService {
 
         return articleInfos;
     }
+
+//    public void addNewArticle(String title,String field)
 }

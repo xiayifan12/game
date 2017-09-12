@@ -5,7 +5,8 @@ import com.game.model.ContentInfo;
 import com.game.model.GameInfo;
 import com.game.service.ContentInfoService;
 import com.game.service.GameInfoService;
-import com.game.util.FormJson;
+import com.game.service.GameUserRelationService;
+import com.game.util.StatusJson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,6 +30,9 @@ public class GameInfoController {
 
     @Autowired
     ContentInfoService contentInfoService;
+
+    @Autowired
+    GameUserRelationService gameUserRelationService;
 
     @GetMapping("/game/{id}")
     public String getGameDetail(@PathVariable int id, Model mapper) {
@@ -55,10 +59,22 @@ public class GameInfoController {
         List<ContentInfo> gameTimeInfo = contentInfoService.getContentDetailByType(3);
         mapper.addAttribute("time", gameTimeInfo);
 
-        List<GameInfo> gameInfos = gameInfoService.getGameSearchInfo(type, platform, net, time, page);
-        mapper.addAttribute("game", gameInfos);
 
-        return "debug";
+
+        List<GameInfo> gameInfos = gameInfoService.getGameSearchInfo(type, platform, net, time, page);
+        mapper.addAttribute("games", gameInfos);
+
+        if(page == 0)
+        mapper.addAttribute("page",1);
+        else mapper.addAttribute("page",page);
+
+        return "GameSearchPage";
+    }
+
+    @GetMapping("/game/flash")
+    @ResponseBody
+    public String SearchPageForAjax(){
+        return "";
     }
 
 
@@ -101,6 +117,20 @@ public class GameInfoController {
             return "404";
 
         }
+    }
+
+
+
+
+    @GetMapping("/game/{id}/like")
+    @ResponseBody
+    public StatusJson AddCancelRelationForGame(@RequestParam("userid") int userId,@RequestParam("gameId") int gameId){
+
+        StatusJson statusJson = new StatusJson();
+
+        statusJson.status = gameUserRelationService.CancelOrAddRelation(gameId,userId);
+
+        return statusJson;
     }
 
 
