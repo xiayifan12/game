@@ -1,111 +1,198 @@
-<!DOCTYPE html>
+﻿<!doctype html>
 <html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <meta charset="UTF-8">
-    <title>HomePage</title>
+	<!-- Basic page needs
+    ======================================-->
+	<title>Home</title>
+	<meta charset="utf-8">
+	<meta name="author" content="">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
 
 
-    <!--下面一句表示当页面打开时先设置定时器，当时间为0时启动hideURLbar函数-->
-    <script type="application/x-javascript"> addEventListener("load", function () {
-        setTimeout(hideURLbar, 0);
-    }, false);
-    function hideURLbar() {
-        window.scrollTo(0, 1);
-    } </script>
-    <link href="../static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"> <!--media="all"表示再任何设备上都套用这个css-->
-    <link href="../static/css/style_Gserch.css" rel="stylesheet" type="text/css" media="all">
 
-    <!--字体-->
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic'
-          rel='stylesheet' type='text/css'>
+	<!-- Mobile specific meat
+    ==============================================-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<!-- Favicon
+    ============================================ -->
 
-    <script type="text/javascript" src="../static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="../static/js/move-top.js"></script>
-    <script type="text/javascript" src="../static/js/easing.js"></script>
+	<!-- Template Fonts form google
+    =============================================-->
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
 
-    <script src="../static/js/modernizr.custom.97074.js"></script>
-    <script type="text/javascript" src="../static/js/jquery.hoverdir.js"></script>
+	<!-- Theme main CSS File
+    ==========================================================-->
+	<link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
+	<link rel="stylesheet" href="../static/css/font-awesome.min.css" th:href="@{/css/font-awesome.min.css}">
+	<link rel="stylesheet" href="../static/css/jquery.bxslider.css" th:href="@{/css/jquery.bxslider.css}">
+	<link rel="stylesheet" href="../static/css/style_GameSearch.css" th:href="@{/css/style_GameSearch.css}">
+
+	<!-- Mordernizer Js -->
+	<script src="../static/js/modernizr-2.8.3.min.js" th:src="@{/js/modernizr-2.8.3.min.js}"></script>
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]-->
+	<script src="../static/js/html5shiv.js" th:src="@{/js/html5shiv.js}"></script>
+	<script src="../static/js/respond.min.js" th:src="@{/js/respond.min.js}"></script>
+	<![endif]-->
+
+	<script>
+		$(function () {
+			$("#button").click(function () {
+				var jump = "/game/flash?";
+				jump = jump + "type="+$("#type")+"&";
+				jump = jump + "platform="+$("#platform")+"&";
+				jump = jump + "net="+$("#net")+"&";
+				jump = jump + "time="+$("#time")+"&";
+				jump = jump + "page=1";
+  				//写一下ajax ！！！
+			});
+
+		});
+	</script>
 
 </head>
-<body>
+<body >
+<!-- Property query area start -->
+<section class="property-query-area" >
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3 col-sm-6">
+				<div class="query-title">
+					<h2>寻找你喜欢的游戏吧！！</h2>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<form action="#">
+				<div class="col-md-3 col-sm-6">
+					<div class="single-query" >
+						<label>游戏类型</label>
+						<select name="Any" id="type" >
+							<option value="0" selected>任何</option>
+							<option value="1" th:each="type1:${type}" th:text="${type1.context}">角色扮演</option>
+						<!--<option value="2">FPS</option>
+							<option value="3">动作冒险</option>
+							<option value="4">运动竞技</option>
+							<option value="5">卡牌游戏</option> -->
+						</select>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6">
+					<div class="single-query">
+						<label>游戏平台</label>
+						<select id="platform">
+							<option value="0" selected>任何</option>
+							<option value="1" th:each="plat1:${plat}" th:text="${plat1.context}">角色扮演</option>
+							<!--<option value="1">PC</option>-->
+							<!--<option value="2">PS4</option>-->
+							<!--<option value="3">XBOX</option>-->
+							<!--<option value="4">Nintendo Switch</option>-->
+							<!--<option value="5">Mobile</option>-->
+						</select>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6">
+					<div class="single-query">
+						<label>联网类型</label>
+						<select id="net">
+							<option value="0" selected>任何</option>
+							<option value="1" th:each="net1:${net}" th:text="${net1.context}">单机游戏</option>
+							<!--<option value="2">联网游戏</option>-->
+						</select>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6">
+					<div class="single-query">
+						<label>发售年份</label>
+						<select id="time">
+							<option value="0" selected>任何</option>
+							<option value="1" th:each="time1:${time}" th:text="${time1.context}">2017</option>
+							<!--<option value="2">2016</option>-->
+							<!--<option value="3">2015</option>-->
+							<!--<option value="4">2014</option>-->
+						</select>
+					</div>
+					<div class="query-submit-button pull-right">
+						<input id="button" type="button" value="给我搜！">
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</section>
+<!--Property query area End-->
 
-<div class="header" id="home">
-    <div class="header-top">  <!--头页的上部-->
-        <a href="HomePage.html"><img src="../static/images/logo-2.png" alt=""/></a> <!--到时候此处放logo,跳转到首页-->
-        <h1>SKY FUCKER</h1> <!-- 网站名  需要更换字体-->
-    </div>
-</div>
+<!--Start of Properties Area-->
+<section class="properties-area area-pading fix">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="properties-title">
+					<h2>SHOW TIME !!</h2>
+					<a href="#" class="view-more"> →</a>
+					<a href="#" th:if="${page!=1}" class="view-more">← </a>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4 col-sm-6" th:each="game:${games}">
+				<div class="single-featured-properties" >
+					<div class="properties-image">
+						<a href="#"><img src="../static/images/zld1.jpg" th:src="@{/images/{banner}(banner=${game.banner})}" alt=""></a>
+					</div>
 
-<div class="selectBanner">
-    <div class="container">
-        <form class="select">
-            <div class="gameType">
-                <h4>游戏类型：</h4>
-                <ul>
-                    <li><input name="type" type="radio" value=0/>ALL</li>
-                    <li><input name="type" type="radio" value=1/>角色扮演</li>
-                    <li><input name="type" type="radio" value=2/>动作冒险</li>
-                    <li><input name="type" type="radio" value=3/>FPS</li>
-                    <li><input name="type" type="radio" value=4/>策略战争</li>
-                    <li><input name="type" type="radio" value=5/>即时战略</li>
-                    <li><input name="type" type="radio" value=6/>TPS</li>
-                    <li><input name="type" type="radio" value=6/>卡牌游戏</li>
-                    <li><input name="type" type="radio" value=6/>休闲益智</li>
-                    <li><input name="type" type="radio" value=6/>运动竞速</li>
-                    <li><input name="type" type="radio" value=6/>文字冒险</li>
-                </ul>
-            </div>
+					<div class="properties-include">
+						<ul>
+							<li th:text="${game.name}"><i class="fa fa-home" ></i> 塞尔达传说</li>
+							<li th:text="${net[(game.connection)].context}"><i class="fa fa-tty" ></i> 单机游戏</li>
+							<li th:text="${type[(game.type)-1].context}"><i class="fa fa-bed" ></i>角色扮演</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- End of Single properties -->
 
+			<!-- End of Single properties -->
+			<div class="col-md-4 col-sm-6 hidden-md hidden-lg">
+				<div class="single-featured-properties">
+					<div class="properties-image">
+						<a href="#"><img src="img/properties/3.jpg" alt=""></a>
+					</div>
+					<div class="sale-tag">
+						<p>For Sale</p>
+					</div>
+					<div class="properties-include">
+						<ul>
+							<li><i class="fa fa-home"></i> 30,000 Acres</li>
+							<li><i class="fa fa-bed"></i>4 Bedrooms</li>
+							<li><i class="fa fa-tty"></i> 4 Bathrooms</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- End of Single properties -->
+		</div>
+	</div>
+</section>
+<!-- End of Properties Area-->
 
-            <div class="gamePlat">
-                <h4>游戏平台：</h4>
-                <ul>
-                    <li><input name="type" type="radio" value=0/>ALL</li>
-                    <li><input name="type" type="radio" value=1/>PC</li>
-                    <li><input name="type" type="radio" value=2/>PS4</li>
-                    <li><input name="type" type="radio" value=3/>Switch</li>
-                    <li><input name="type" type="radio" value=4/>PC</li>
-                    <li><input name="type" type="radio" value=5/>Xbox</li>
-                    <li><input name="type" type="radio" value=6/>Mobile</li>
-                </ul>
-            </div>
-
-            <div class="gameNet">
-                <h4>联网类型：</h4>
-                <ul>
-                    <li><input name="type" type="radio" value=0/>ALL</li>
-                    <li><input name="type" type="radio" value=1/>联网游戏</li>
-                    <li><input name="type" type="radio" value=2/>单机游戏</li>
-                </ul>
-            </div>
-
-            <div class="gameTime">
-                <h4>发售时间：</h4>
-                <ul>
-                    <li><input name="type" type="radio" value=0/>ALL</li>
-                    <li><input name="type" type="radio" value=1/>2017</li>
-                    <li><input name="type" type="radio" value=2/>2016</li>
-                    <li><input name="type" type="radio" value=2/>2015</li>
-                    <li><input name="type" type="radio" value=2/>2014</li>
-                    <li><input name="type" type="radio" value=2/>2013</li>
-
-                </ul>
-            </div>
-
-
-
-
-        </form>
-
-
-    </div>
-
-
-
-</div>
-
-
+<!-- Placed js at the end of the document so the pages load faster -->
+<!-- Main jQuery file -->
+<script src="../static/js/jquery-1.11.3.min.js" th:src="@{/js/jquery-1.11.3.min.js}"></script>
+<!-- Bootstrap Js -->
+<script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+<!-- wow js -->
+<script src="../static/js/wow.min.js" th:src="@{/js/wow.min.js}"></script>
+<!-- Initialize WOW js for Animation-->
+<script>
+	new WOW().init();
+</script>
+<!-- Theme jQuery Codes goes hear -->
+<script src="../static/js/script.js" th:src="@{/js/script.js}"></script>
 </body>
+<!-- Body End  -->
 </html>
+

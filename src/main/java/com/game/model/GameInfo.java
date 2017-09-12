@@ -12,7 +12,6 @@ public class GameInfo {
     private  int type;
     private  String platform;
     private  int connection;
-    private  String website;
     private  String image;
     private String banner;
     private Date time;
@@ -114,13 +113,6 @@ public class GameInfo {
         this.connection = connection;
     }
 
-    public String getWebsite() {
-        return website;
-    }
-
-    public void setWebsite(String website) {
-        this.website = website;
-    }
 
 
 }

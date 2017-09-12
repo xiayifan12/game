@@ -1,20 +1,21 @@
 package com.game.controller;
 
-import com.game.model.ContentInfo;
 import com.game.model.ArticleInfo;
 import com.game.service.ArticleInfoService;
 import com.game.service.ContentInfoService;
+import com.game.util.ArticleForm;
+import com.game.util.StatusJson;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 /**
  * Created by 大清自有国情在此 on 2017/9/10.
  */
+@Controller
 public class ArticleInfoController {
 
     @Autowired
@@ -23,15 +24,16 @@ public class ArticleInfoController {
     @Autowired
     ContentInfoService contentInfoService;
 
-    @GetMapping("/aricle/{id}")
+    @GetMapping("/article/{id}")
     public String getArticleDetail(@PathVariable int id , Model mapper){
 
-        ArticleInfo gameInfo = articleInfoService.getArticleDetailById(id);
-        mapper.addAttribute("game",gameInfo);
+        ArticleInfo articleInfo = articleInfoService.getArticleDetailById(id);
+        System.out.print(articleInfo.getContent());
+        mapper.addAttribute("article",articleInfo);
         return "ArticlePage.html";
     }
 
-    @GetMapping("/aricle")
+    @GetMapping("/article")
     public String getGameContentAndInfo(Model mapper , @RequestParam(name = "type",required=false,defaultValue = "0")int type,
                                                         @RequestParam(name = "time",required=false,defaultValue = "0")int time ){
 
@@ -47,4 +49,32 @@ public class ArticleInfoController {
 
         return "ArticlePage.html";
     }
+
+    @GetMapping("/article/add")
+    public String postArticle(){
+        return "ArticleEdit";
+    }
+
+    @PostMapping("/article/add/up")
+    @ResponseBody
+    public StatusJson addNewArticle (@RequestBody ArticleForm data){
+        StatusJson statusJson = new StatusJson();
+
+        if(data.field!=null&&data.title!=null) {
+            statusJson.status=1;
+//            articleInfoService.
+
+        }
+        else {
+            statusJson.status=0;
+        }
+        return statusJson;
+
+    }
+
+
+
+
+
+
 }

@@ -1,0 +1,413 @@
+
+/*----------------------------------------*/
+/*  1. Theme Default CSS (body, link color, section etc)
+/*----------------------------------------*/
+html, 
+body {
+
+	height: 100%;
+}
+body {
+    background: url(/images/Gsearch.jpg);
+	font-family: 'Roboto', sans-serif;
+}
+a:focus {
+	outline:0px solid;
+  text-decoration: none;
+}
+img {
+	max-width: 100%;
+  height: auto;
+}
+.fix {
+	overflow: hidden
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  margin: 0 0 20px;
+  text-transform: none;
+}
+a {
+	transition: all 0.3s ease 0s;
+	text-decoration:none
+}
+a:hover,
+.agent-detail h4:hover a,
+.phone-mail-area a:hover,
+.register-login > a:hover{
+  text-decoration:none;
+  color: #38a377;
+}
+ul{
+	list-style: outside none none;
+	margin: 0;
+	padding: 0
+}
+.floatleft {
+	float:left
+}
+.floatright {
+	float:right
+}
+.margintop100{
+  margin-top: 100px;
+}
+.area-pading{
+  padding: 100px 0;
+}
+.padding-zero{
+  padding: 0;
+}
+.padding-right-zero{
+  padding-right: 0;
+}
+.padding-left-zero{
+  padding-left: 0px;
+}
+.padding-left-65{
+  padding-left: 65px;
+}
+.padding-right-65{
+  padding-right: 65px;
+}
+.promo-content > p,
+.promo-content h3 a:hover,
+.properties-include li,
+.properties-content > p,
+.price-range.pull-left,
+.price-detail.pull-right:hover, 
+.trams-poly.pull-right li:hover a,
+.column-property-content > h3,
+.column-property-content > p, 
+.widget-property-img-wrap > p,
+.tab-content-padding p,
+.download-list li a,
+.agents-details p,
+.post-meta > p,
+.media-body p,
+.four-o-four-content.text-center > p,
+.contact-area-title > p,
+.panel-body > p,
+.area-heading-style-one.text-center > p{
+  color: #666666;
+}
+/*--------------------------------
+Font Weight 500 all element 
+----------------------------------*/
+.phone-mail-area a,
+.register-login > a,
+#nav li a,
+.slide-property-detail li a,
+.single-query label,
+.promo-content h3,
+.promo-content > p,
+.properties-include li,
+.properties-content h3 a,
+.properties-content > p,
+.price-range.pull-left,
+.price-detail.pull-right,
+.widget-title > h3,
+.properties-content-footer h3,
+.properties-content-footer p,
+.properties-img.pull-left > p,
+.trams-poly a,
+.column-property-content > h2,
+.column-property-content > p, 
+.widget-property-img-wrap > p,
+.column-property-more > a,
+.scroll-for-btn > a,
+.properties-content-footer.pull-left > h4,
+.tab-content-padding p,
+.description-tab-content.tab-content-padding > h4,
+.download-list li a,
+.similar-property-tag > p,
+.single-property-similar-cat .owl-theme .owl-controls .owl-buttons div,
+.column-property-content h4 a,
+.agents-details p,
+.agents-contact input,
+textarea#agent-message-box,
+.agents-contact input[type="submit"],
+.blog-style .column-property-tag > p,
+.single-post .column-property-content > h2,
+.media-body > h4,
+.comment-date li a,
+.sent-btn > input[type="submit"],
+.four-o-four h1,
+.four-o-four h2,
+.bac-btn,
+.main-form.text-center input,
+.contact-form-main textarea,
+.panel-title span.q-mark,
+.panel-title > a,
+.panel-body > p,
+.location,
+.single-sp-widget h3{
+  font-weight: 500;
+}
+/*------------------------------------
+Secondary color
+------------------------------------*/
+.properties-content h3 a,
+.column-property-content > h2  a,
+.single-sp-widget h3 a, 
+.properties-content-footer.pull-left a,
+.property-tab li.active a,
+.column-property-content h4 a,
+.single-post .column-property-content > h2,
+.media-body > h4 a,
+.comment-date li a:hover,
+.four-o-four h2,
+.panel-title > a,
+.location {
+  color: #353535;
+}
+
+/*----------------------------------------------
+5. Query Form area Style
+------------------------------------------------*/
+.property-query-area {
+  /*background: #f5f5f5 none repeat scroll 0 0;*/
+  padding: 50px 0;
+}
+.query-title {
+  background: #262626 none repeat scroll 0 0;
+  opacity: 0.8;
+  text-align: center;
+}
+.query-title > h2 {
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 25px 0;
+  text-transform: uppercase;
+}
+.single-query label {
+  color: #fff;
+  font-size: 15px;
+  margin-bottom: 12px;
+  margin-top: 25px;
+}
+.single-query {
+  min-height: 200px;
+}
+.single-query > input[type="text"] {
+  border: 1px solid #e1e1e1;
+  height: 40px;
+  padding-left: 10px;
+  transition: all 0.3s ease 0s;
+}
+.single-query select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("../img/select-icon.jpg");
+  background-position: right center;
+  background-repeat: no-repeat;
+  border: 1px solid #e1e1e1;
+  position: relative;
+  color: #9f9e9e;
+  height: 40px;
+  padding: 10px
+}
+.single-query select:focus {
+  outline: none;
+}
+.single-query select:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
+}
+.single-query option {
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+}
+.query-submit-button.pull-right > input[type="button"] {
+  background: #40a47a none repeat scroll 0 0;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  color: #fff;
+  font-weight: bold;
+  height: 40px;
+  line-height: 40px;
+  margin-top: 30px;
+  padding: 0 15px;
+  text-transform: uppercase;
+  transition: all 0.4s ease 0s;
+}
+.query-submit-button.pull-right > input[type="button"]:hover{
+  border: 1px solid #40A47A;
+  color: #40A47A;
+  background: #F5F5F5;
+}
+.single-query input, .single-query select {
+  text-transform: capitalize;
+  width: 100%;
+}
+.single-query > input[type="text"]:focus {
+  border: 1px solid #38a377;
+}
+
+/*
+-----------------------------------------------
+7. Home Properties Area Style
+-----------------------------------------------*/
+.properties-area {
+  /*background: #f5f5f5 none repeat scroll 0 0;*/
+  padding: 100px 0;
+}
+
+.properties-title {
+    background: #262626 none repeat scroll 0 0;
+  opacity: 0.8;
+  color: #fff;
+    overflow: hidden;
+    padding: 25px;
+    margin-bottom: 40px;
+}
+.properties-title > h2 {
+    float: left;
+    font-size: 36px;
+    font-weight: 700;
+    margin: 0;
+    text-transform: uppercase;
+}
+.view-more {
+  background: #38a377 none repeat scroll 0 0;
+  border-radius: 3px;
+  color: #fff;
+  display: block;
+  float: right;
+  font-weight: 700;
+  overflow: hidden;
+  padding: 10px 15px;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+}
+.view-more:hover{
+  border: 1px solid #38a377;
+  background-color: transparent;
+  color: #fff;
+}
+/*-----------------------------------------------
+7.1 Single Properties Area Style
+-----------------------------------------------*/
+.single-featured-properties, 
+.column-property-img {
+  position: relative;
+  overflow: hidden;
+}
+
+.properties-image a::before, 
+.column-property-img a::before {
+  background: rgba(0, 0, 0, 0.5) none repeat scroll 0 0;
+  content: "";
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  transform: translateY(100%);
+  transition: all 0.3s ease 0s;
+  width: 100%;
+}
+.single-featured-properties:hover .properties-image a::before, 
+.column-single-property:hover .column-property-img a:before,
+.column-property-img:hover {
+  opacity: 1;
+  transform: translateY(0px);
+}
+.properties-image {
+  overflow: hidden;
+  position: relative;
+}
+.properties-image img {
+  width: 100%;
+}
+.sale-tag > p {
+  background: #38a377 none repeat scroll 0 0;
+  color: #fff;
+  font-weight: 700;
+  left: -4px;
+  padding: 10px 15px;
+  position: absolute;
+  text-transform: uppercase;
+  top: 6px;
+}
+.properties-include {
+    background: #ebebeb none repeat scroll 0 0;
+   opacity: 0.8;
+    overflow: hidden;
+}
+.properties-include ul{
+  text-align: center;
+}
+.properties-include li {
+  display: inline-block;
+  font-size: 12px;
+  padding: 15px;
+}
+.properties-include li i {
+  margin-right: 5px;
+}
+.properties-include.opicity-bg li {
+  color: #fff;
+  width: 20%;
+  padding: 0;
+}
+.agent-page-default .properties-include li a {
+  color: #fff;
+  display: block;
+  font-size: 18px;
+  height: 47px;
+  line-height: 47px;
+}
+.properties-include.opicity-bg a:hover {
+  background: #38a377 none repeat scroll 0 0;
+}
+.agent-page-default .properties-include li {
+  border-left: 1px solid #999;
+  float: left;
+}
+.properties-content {
+  background: #fff none repeat scroll 0 0;
+  border-bottom: 7px solid #38a377;
+  overflow: hidden;
+  padding: 25px 25px 15px;
+}
+.properties-content > h3 {
+  margin-bottom: 10px;
+}
+.properties-content h3 a {
+  display: inline-block;
+  font-size: 18px;
+  text-transform: capitalize;
+}
+.properties-content h3:hover a{
+  color: #38a377;
+}
+p.detail-text {
+    border-bottom: 1px solid #d7ede4;
+    border-top: 1px solid #d7ede4;
+    padding: 20px 0;
+}
+.price-range.pull-left {
+  margin: 0;
+}
+.price-detail.pull-right {
+  color: #38a377;
+}
+/*-----------------------------------------------
+8. Dream Area Style
+-----------------------------------------------*/
+
+/*-----------------------------------------------
+9. Single Agent Style
+-----------------------------------------------*/
+
+/*-----------------------------------------------
+10. Testimonial Area Style
+-----------------------------------------------*/
+
+/*-----------------------------------------------
+12. Footer Top Area style
+-----------------------------------------------*/

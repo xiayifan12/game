@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Classy Job Application Form Flat Responsive widget Template :: w3layouts</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Classy Job Application Form Widget Responsive, Login form web template,Flat Pricing tables,Flat Drop downs  Sign up Web Templates, Flat Web Templates, Login signup Responsive web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- font files -->
+<link href='//fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+<!-- /font files -->
+<!-- css files -->
+<link href="../static/css/style_AddGame.css" th:href="@{/css/style_AddGame.css}" rel='stylesheet' type='text/css' media="all" />
+<link rel="stylesheet" href="../static/css/j-forms.css" th:href="@{/css/j-forms.css}">
+
+<!-- /css files -->
+<script type="text/javascript" src="../static/js/jquery-2.1.4.min.js" th:src="@{/js/jquery-2.1.4.min.js}"></script>
+
+
+
+</head>
+<body>
+<h1 class="header-w3ls">添加新的游戏</h1>
+<div class="content-w3ls">
+	<div class="form-w3ls">
+		<form action="#" method="post" id="formP" th:action="@{/game/add/up}" enctype="multipart/form-data">
+			<div class="content-wthree1">
+				<div class="grid-agileits1">
+					<div class="form-control"> 
+						<label class="header">中文名 <span>*</span></label>
+						<input type="text" id="name" name="name" placeholder="游戏名" title="Please enter  Full game Name" required="">
+					</div>
+
+					<div class="form-control">
+						<label class="header">英文名 <span>*</span></label>
+						<input type="text" id="email" name="enName" placeholder="English Name" title="Please enter the English Name" required="">
+					</div>
+					<div class="form-control"> 
+						<label class="header">游戏版本 <span>*</span></label>
+						<input type="text" id="name" name="version" placeholder="游戏版本" title="Please enter the version of the game" required="">
+					</div>
+					<div class="form-control">
+						<label class="header">游戏公司 <span>*</span></label>
+						<input type="text" id="name" name="copyright" placeholder="游戏公司" title="Please enter the copyright" required="">
+					</div>
+					<div class="form-control">
+						<label class="header">游戏简介 <span>*</span></label>
+						<input type="text" id="name" name="describe" placeholder="游戏简介" title="Please enter the describe" required="">
+					</div>
+					<div class="form-control">
+						<label class="header">发售时间 <span>*</span></label>
+						<input type="number" id="name" name="year"  placeholder="年份" title="Please enter the year" required="">
+						<input type="number" id="name" name="month" placeholder="月份" title="Please enter the month" required="">
+						<input type="number" id="name" name="day" placeholder="日份" title="Please enter the day" required="">
+					</div>
+
+				</div>
+			</div>
+				<div class="form-control">
+					<div class="main-row">
+						<label class="header">发售平台 <span>*</span></label>
+							<select name="platform">
+								<option value="none" selected="" disabled="">选择发售平台</option>
+								<option value="PS4">PS4</option>
+								<option value="Xbox">Xbox</option>
+								<option value="PC">PC</option>
+								<option value="Nintendo Switch">Nintendo Switch</option>
+								<option value="mobile">mobile</option>
+							</select>
+							<i></i>
+						
+					</div>
+				</div>
+				<div class="form-control">
+				<div class="main-row">
+						<label class="header">请选择联网类型<span>*</span></label>
+							<select name="connection">
+								<option value="none" selected="" disabled="">联网类型</option>
+								<option value="0">单机游戏</option>
+								<option value="1">联网游戏</option>
+							</select>
+							<i></i>
+					</div>
+				</div>
+
+			<div class="form-control">
+				<div class="main-row">
+					<label class="header">请选择游戏类型<span>*</span></label>
+					<select name="type">
+						<option value="none" selected="" disabled="">游戏类型</option>
+						<option value="1">角色扮演</option>
+						<option value="2">动作冒险</option>
+						<option value="3">FPS</option>
+						<option value="4">策略战争</option>
+						<option value="5">即时战略</option>
+						<option value="6">TPS</option>
+						<option value="7">卡牌游戏</option>
+						<option value="8">休闲益智</option>
+						<option value="9">运动竞速</option>
+						<option value="10">文字冒险</option>
+					</select>
+					<i></i>
+				</div>
+			</div>
+
+
+				<div class="w3ls-btn">
+					<div class="contact-forms">
+					<label class="rating" id="banner">上传游戏图片1</label>
+						<label class="input append-small-btn">
+								<div class="upload-btn">
+									上传
+									<input type="file" name="banner" onchange="document.getElementById('banner').innerHTML = '上载成功';">
+								</div>
+						</label>
+
+						<div class="wthreesubmitaits"/>
+
+					</div>
+				</div>
+
+
+			<div class="w3ls-btn">
+				<div class="contact-forms">
+					<label class="rating" id="image" >上传游戏图片2</label>
+					<label class="input append-small-btn">
+						<div class="upload-btn" >
+							上传
+							<input type="file" name="image"  onchange="document.getElementById('image').innerHTML = '上载成功';">
+						</div>
+					</label>
+
+					<div class="wthreesubmitaits">
+						<input type="submit" name="submit" value="Send">
+					</div>
+				</div>
+			</div>
+
+
+		</form>
+
+	</div>
+	
+</div>
+
+
+
+</body>
+</html>
