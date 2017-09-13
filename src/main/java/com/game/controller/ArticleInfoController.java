@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -51,7 +52,8 @@ public class ArticleInfoController {
     }
 
     @GetMapping("/article/add")
-    public String postArticle(){
+    public String postArticle(HttpSession httpSession,Model model) {
+        model.addAttribute("user",httpSession.getAttribute("c_user"));
         return "ArticleEdit";
     }
 
