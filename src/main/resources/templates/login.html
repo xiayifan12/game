@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<html lang="en">
+<head>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <meta charset="utf-8">
+    <title>帅翻</title>
+    <meta name="description" content="哔哔小子">
+    <meta name="author" content="金元浩 夏一凡 赵有贵">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../static/css/login.css" th:href="@{/css/login.css}">
+    <script src="../static/js/login.js" th:src="@{/js/login.js}"></script>
+   <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <link href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}" rel="stylesheet" type="text/css" media="all"/>
+            <!--theme-style-->
+    <script src="http://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js"></script>
+
+            <!--//theme-style-->
+            <!--fonts-->
+            <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+            <!--//fonts-->
+            <script type="text/javascript" src="../static/js/jquery-2.1.4.min.js" th:src="@{/js/jquery-2.1.4.min.js}"></script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            $(".scroll").click(function(event){
+                event.preventDefault();
+                $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+            });
+        });
+
+        $(function () {
+            $("#log").click(function () {
+                var data = {'user':$("#l_user").val(),'password':$("#l_pass").val()};
+                $.ajax({
+                    url:"/login",
+                    type:"POST",
+                    data:JSON.stringify(data),
+//                    data: JSON.stringify(data),
+                    contentType:'application/json'
+                }).done(function (msg) {
+                    if(msg.status){
+                        alert("登陆成功");
+                        window.location = "/home";
+                    }
+                    else alert("登陆失败");
+                });
+            });
+
+            $("#reg").click(function () {
+                var data = {'user':$("#r_user").val(),'password':$("#r_pass").val(),'pri':$("#pp").val(),'email':$("#r_email").val()};
+                $.ajax({
+                    url:"/register",
+                    type:"POST",
+                    data:data
+//                    data: JSON.stringify(data),
+//                    contentType:'application/json'
+                }).done(function (msg) {
+                    if(msg.status!=0){
+                        if (msg.status==1)
+                        alert("欢迎新用户");
+                        else alert("欢迎新编辑");
+                    }
+                    else  alert("注册失败");
+                });
+            });
+
+            $("#find").click(function () {
+                var data = {'user':$("#f_user").val(),'email':$("#f_email").val(),'password':$("#f_psw").val()};
+                $.ajax({
+                    url:"/find",
+                    type:"POST",
+                    data: data
+//                    contentType:'application/json'
+                }).done(function (msg) {
+                    if(msg.status!=0){
+                        alert("修改成功");
+
+                    }
+                    else  alert("修改失败");
+                });
+            });
+
+        });
+    </script>
+
+
+
+
+
+</head>
+<body>
+<br><br><br><br><br><br>
+<br>
+<br>
+<br>
+<div class="container">
+    <div class="flat-form">
+        <ul class="tabs">
+            <li>
+                <a href="#login" class="active">登陆</a>
+            </li>
+            <li>
+                <a href="#register">注册</a>
+            </li>
+            <li>
+                <a href="#reset">忘记密码</a>
+            </li>
+        </ul>
+        <div id="login" class="form-action show">
+            <h1>哔哔小子登录</h1>
+            <p>
+               请输入用户名及密码登陆
+            </p>
+            <form>
+                <ul>
+                    <li>
+                        <input type="text" placeholder="用户名" id="l_user" required />
+                    </li>
+                    <li>
+                        <input type="password" placeholder="密码" id="l_pass" required />
+                    </li>
+                    <li>
+                        <input type="button" value="登陆" class="button"  id="log"/>
+                    </li>
+                </ul>
+            </form>
+        </div>
+        <!--/#login.form-action-->
+        <div id="register" class="form-action hide">
+            <h1>注册你的哔哔小子</h1>
+            <p>
+                请设置用户名及密码
+            </p>
+            <form>
+                <ul>
+                    <li>
+                        <input type="text" placeholder="用户名" id="r_user" required  />
+                    </li>
+                    <li>
+                        <input type="password" placeholder="密码" id="r_pass"  required/>
+                    </li>
+                    <li>
+                        <input type="text" placeholder="邮箱" id="r_email"  required/>
+                    </li>
+                    <li>
+                        <input type="text" placeholder="权限码（选填）" id="pp" />
+                    </li>
+                    <li>
+                        <input type="button" value="注册" class="button" id="reg" />
+                    </li>
+
+                </ul>
+            </form>
+        </div>
+        <div id="reset" class="form-action hide">
+            <h1>忘记密码</h1>
+            <p>
+                请输入用户名及你的生日找回密码
+            </p>
+            <form>
+                <ul>
+                    <li>
+                        <input type="text" placeholder="用户名" id="f_user" />
+                    </li>
+                    <li>
+                        <input type="text" placeholder="您的邮箱" id="f_email" />
+                    </li>
+                    <li>
+                        <input type="text" placeholder="您的新密码" id="f_psw" />
+                    </li>
+                    <li>
+                        <input type="button" value="找回密码" class="button" id="find" />
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </div>
+</div>
+<script class="cssdeck" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+</body>
+</html>

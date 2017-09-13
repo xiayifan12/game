@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * Created by xiayifan on 2017/9/8.
  */
@@ -15,9 +17,10 @@ public class HomeController {
     @Autowired
     GameInfoService gameInfoService;
 
-    @GetMapping("/")
-    public String HomeDetail(Model mapper){
+    @GetMapping("/home")
+    public String HomeDetail(Model mapper, HttpSession session){
         mapper.addAttribute("game",gameInfoService.getGameDetailRandom(3));
+        mapper.addAttribute("user",session.getAttribute("c_user"));
         return "HomePage";
     }
 }

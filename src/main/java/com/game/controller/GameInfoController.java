@@ -6,6 +6,7 @@ import com.game.model.GameInfo;
 import com.game.service.ContentInfoService;
 import com.game.service.GameInfoService;
 import com.game.service.GameUserRelationService;
+import com.game.util.GameJson;
 import com.game.util.StatusJson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -64,17 +65,24 @@ public class GameInfoController {
         List<GameInfo> gameInfos = gameInfoService.getGameSearchInfo(type, platform, net, time, page);
         mapper.addAttribute("games", gameInfos);
 
-        if(page == 0)
-        mapper.addAttribute("page",1);
-        else mapper.addAttribute("page",page);
+        mapper.addAttribute("page",0);
 
         return "GameSearchPage";
     }
 
     @GetMapping("/game/flash")
     @ResponseBody
-    public String SearchPageForAjax(){
-        return "";
+    public GameJson SearchPageForAjax(@RequestParam(name = "type", required = false, defaultValue = "0") int type,
+                                    @RequestParam(name = "platform", required = false, defaultValue = "0") int platform,
+                                    @RequestParam(name = "net", required = false, defaultValue = "0") int net,
+                                    @RequestParam(name = "time", required = false, defaultValue = "0") int time,
+                                    @RequestParam(name = "page", required = false, defaultValue = "0") int page){
+
+        GameJson gameJson = new GameJson();
+        gameJson.status = 1;
+        gameJson.games = gameInfoService.getGameSearchInfo(type,platform,net,time,page);
+        gameJson.size = gameJson.games.size();
+        return gameJson;
     }
 
 

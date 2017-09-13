@@ -46,15 +46,15 @@
 
 <div class="header" id="home">
     <div class="header-top">  <!--头页的上部-->
-        <a href="HomePage.html"><img src="../static/images/logo-2.png" th:src="@{/images/logo-2.png}" alt=""/></a> <!--到时候此处放logo,跳转到首页-->
-        <h1>SKY FUCKER</h1> <!-- 网站名  需要更换字体-->
+        <a href="#" th:href="@{/user/{id}(id=${user.id})}"><img src="../static/images/logo-2.png" th:src="@{/images/logo-2.png}" alt=""/></a> <!--到时候此处放logo,跳转到首页-->
+        <h1>BIBI GUY</h1> <!-- 网站名  需要更换字体-->
     </div>
 </div>
 
 <<!--games-->
 <div class="container">
     <div class="games">
-        <a><h3 >Games</h3></a>
+        <a th:href="@{/game/}"><h3 >Games</h3></a>
         <section>
             <ul id="da-thumbs" class="da-thumbs" th:each="game:${game}">
                 <li>
@@ -74,7 +74,7 @@
 
 <div class="container">
     <div class="article">
-        <a><h3 >Articles</h3></a>
+        <h3 >Articles</h3>
         <ul>
             <section>
                 <ul id="da-thumbs1" class="da-thumbs1">
