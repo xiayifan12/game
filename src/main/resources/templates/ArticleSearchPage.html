@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Basic page needs
+    ======================================-->
+    <title>哔哔搜文章</title>
+    <meta charset="utf-8">
+    <meta name="author" content="">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+
+
+    <!-- Mobile specific meat
+    ==============================================-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Favicon
+    ============================================ -->
+
+    <!-- Template Fonts form google
+    =============================================-->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+
+    <!-- Theme main CSS File
+    ==========================================================-->
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="../static/css/font-awesome.min.css" th:href="@{/css/font-awesome.min.css}">
+    <link rel="stylesheet" href="../static/css/jquery.bxslider.css" th:href="@{/css/jquery.bxslider.css}">
+    <link rel="stylesheet" href="../static/css/style_GameSearch.css" th:href="@{/css/style_GameSearch.css}">
+
+    <!-- Mordernizer Js -->
+    <script src="../static/js/modernizr-2.8.3.min.js" th:src="@{/js/modernizr-2.8.3.min.js}"></script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]-->
+    <script src="../static/js/html5shiv.js" th:src="@{/js/html5shiv.js}"></script>
+    <script src="../static/js/respond.min.js" th:src="@{/js/respond.min.js}"></script>
+    <![endif]-->
+
+    <script src="http://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js"></script>
+    <script>
+        $(function () {
+            $("#button").click(function () {
+                var replayBody = $("#replay");
+                var jump = "/article/flash?";
+                jump = jump + "title=";
+                jump = jump + $("#keyword-input").val();
+                var html = " ";
+                //写一下ajax ！！！
+                $.ajax({
+                    url: jump,
+                    method: "GET"
+                }).done(function (msg) {
+                    replayBody.html(html);
+                    for (var i = 0; i < msg.size; i++) {
+                        html = html + '<div class="col-md-4 col-sm-6">';
+                        html = html + '<div class="single-featured-properties">';
+                        html = html + '<div class="properties-image" >';
+                        html = html + '<a href="/article/' + msg.articles[i].id;
+                        html = html + '">';
+                        html = html + '<img src ="/images/article.jpg';
+                        html = html + '" alt="" />';
+                        html = html + '</a>';
+                        html = html + '</div>';
+                        //分一下
+                        html = html + '<div class="properties-include"><ul>';
+                        html = html + '<li>';
+                        html = html + '<i class="fa fa-home" ></i>' + msg.articles[i].name + '</li>';
+                        html = html + '</ul></div></div></div>';
+
+                    }
+
+                    replayBody.html(html);
+                });
+            });
+        });
+
+
+
+
+    </script>
+
+
+</head>
+<body >
+<!-- Property query area start -->
+<section class="property-query-area" >
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="query-title">
+                    <h2>寻找你喜欢的文章吧！！</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <form action="#">
+                <div class="col-md-3 col-sm-6">
+                    <div class="single-query" >
+                        <label for="keyword-input">文章标题</label>
+                        <input type="text" id="keyword-input" placeholder="Any">
+                    </div>
+                    <div class="query-submit-button pull-right">
+                        <input id="button" type="button" value="给我搜！">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<!--Property query area End-->
+
+<!--Start of Properties Area-->
+<section class="properties-area area-pading fix">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="properties-title">
+                    <h2>SHOW TIME !!</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="replay">
+            <!--<div class="col-md-4 col-sm-6" th:each="game:${games}" >-->
+            <!--<div class="single-featured-properties"  >-->
+            <!--<div class="properties-image">-->
+            <!--<a href="#" th:href="@{game/{id}(id=${game.id})}"><img src="../static/images/zld1.jpg" th:src="@{/images/{banner}(banner=${game.banner})}" alt=""></a>-->
+            <!--</div>-->
+
+            <!--<div class="properties-include">-->
+            <!--<ul>-->
+            <!--<li th:text="${game.name}"><i class="fa fa-home" ></i> 塞尔达传说</li>-->
+            <!--</ul>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+        </div>
+    </div>
+</section>
+<!-- End of Properties Area-->
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<!-- Main jQuery file -->
+<script src="../static/js/jquery-1.11.3.min.js" th:src="@{/js/jquery-1.11.3.min.js}"></script>
+<!-- Bootstrap Js -->
+<script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+<!-- wow js -->
+<script src="../static/js/wow.min.js" th:src="@{/js/wow.min.js}"></script>
+<!-- Initialize WOW js for Animation-->
+<script>
+    new WOW().init();
+</script>
+<!-- Theme jQuery Codes goes hear -->
+<script src="../static/js/script.js" th:src="@{/js/script.js}"></script>
+</body>
+<!-- Body End  -->
+</html>
+

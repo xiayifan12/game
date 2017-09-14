@@ -44,6 +44,14 @@ public class GameInfoService {
         gameInfoMapper.insertGameInfo(name,enName,platform,version,connection,describe,copyright,type,imageName,date,bannerName);
     }
 
+    public void deleteGameInfoById(int gameId){
+        gameInfoMapper.deleteGameInfoById(gameId);
+    }
+
+    public void updateVersionById(int gameId,String version){
+        gameInfoMapper.updateGameInfoById(version,gameId);
+    }
+
 
 
 }

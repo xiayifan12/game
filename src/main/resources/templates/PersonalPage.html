@@ -3,7 +3,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>帅翻游戏社区</title>
+    <title>个人中心</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="Games,Player">
 
@@ -46,10 +46,10 @@
 <!--头页-->
 <div class="header" id="home">
     <div class="header-top">  <!--头页的上部-->
-        <a  ><img src="../static/images/logo-2.png" th:src="@{/images/logo-2.png}" alt=""/></a> <!--到时候此处放logo,跳转到首页-->
+        <a th:href="@{/home}" ><img src="../static/images/logo-2.png" th:src="@{/images/logo-2.png}" alt=""/></a> <!--到时候此处放logo,跳转到首页-->
         <h2>欢迎来到</h2>
         <!--/*@thymesVar id="title" type="java.lang.String"*/-->
-        <h1 >你的哔哔主页</h1> <!--此处应该能改名（后端）-->
+        <h1 th:text="${user.name}+的哔哔主页">你的哔哔主页</h1> <!--此处应该能改名（后端）-->
 
 
     </div>
@@ -62,7 +62,7 @@
                         <ul class="nav">
                             <li><a href="#about" class="scroll">WRITE</a></li>
                             <li><a href="#games" class="scroll" > OR </a></li>
-                            <li><a href="#blog" class="scroll">READ</a></li>
+                            <li><a href="#blog" class="scroll">PLAY</a></li>
                         </ul>
                     </div>
                     <div class="clearfix"></div>
@@ -127,6 +127,8 @@
                 <div class="clearfix"></div>
             </div>
         </div>
+
+
     </div>
 </div>
 <!--介绍页结束-->
@@ -186,25 +188,25 @@
 <div class="blog" id="blog">
     <div class="container">
         <div class="blog-main">
-            <h3>我的文章</h3>
-            <div class="col-md-6 b-article">
-                <a href="\Blog-Page">博客名</a>
+            <h3>我的最爱</h3>
+            <div class="col-md-6 b-article" th:each="game : ${games}" >
+                <a th:text="${game.name}" th:href="@{/game/{id}(id=${game.id})}" style="color: #000000" >博客名</a>
             </div>
 
-            <div class="col-md-6 b-article">
-                <a href="#">博客名</a>
-            </div>
+            <!--<div class="col-md-6 b-article">-->
+                <!--<a href="#">博客名</a>-->
+            <!--</div>-->
 
-            <div class="col-md-6 b-article">
-                <a href="#">博客名</a>
-            </div>
+            <!--<div class="col-md-6 b-article">-->
+                <!--<a href="#">博客名</a>-->
+            <!--</div>-->
 
-            <div class="col-md-6 b-article">
-                <a href="#">博客名</a>
-            </div>
+            <!--<div class="col-md-6 b-article">-->
+                <!--<a href="#">博客名</a>-->
+            <!--</div>-->
             <div class="clearfix"></div>
             <div class="b-btn">
-                <a href="#">Read More!</a>
+                <a th:href="@{/game}" >想找更多游戏?</a>
             </div>
         </div>
     </div>
@@ -212,13 +214,13 @@
 <!--博客页结束-->
 
 <!--尾页开始-->
-<div class="footer">
-    <div class="container">
-        <div class="footer-text">
-            <p>由<a href="#">帅翻制作组</a>制作</p>
-        </div>
-    </div>
-</div>
+<!--<div class="footer">-->
+    <!--<div class="container">-->
+        <!--<div class="footer-text">-->
+            <!--<p>由<a href="#">帅翻制作组</a>制作</p>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
 <!--尾页结束-->
 
 </body>

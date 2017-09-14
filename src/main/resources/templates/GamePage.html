@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>GamePage</title>
+    <title>金蝶游乐场</title>
 
 
     <!--下面一句表示当页面打开时先设置定时器，当时间为0时启动hideURLbar函数-->
@@ -26,13 +26,79 @@
             });
         });
     </script>
+
+    <script>
+        $(function () {
+            $("#del").click(function () {
+                var data = {'gameid':$("#gid").val()};
+                $.ajax({
+                    url:"/game/delete",
+                    type:"GET",
+                    data:data
+//                    data: JSON.stringify(data),
+//                    contentType:'application/json'
+                }).done(function (msg) {
+                    if(msg.status) {
+                        alert("ok");
+                        window.location.href = "/home";
+                    }
+                    else alert("shit");
+                });
+            });
+
+            $("#like").click(function () {
+                var data = {'gameId':$("#gid").val()};
+//                var data = {title:"asdd",field:"asdasd"};
+                $.ajax({
+                    url:"/game/like",
+                    type:"GET",
+                    data:data
+//                    data: JSON.stringify(data),
+//                    contentType:'application/json'
+                }).done(function (msg) {
+                    if(msg.status) {
+                        alert("添加喜欢成功");
+
+                    }
+                    else alert("取消喜欢");
+                });
+            });
+
+            $("#update").click(function () {
+                var version = prompt("请输入新版本:","");
+                var data = {'gameId':$("#gid").val(),'version':version};
+//                var data = {title:"asdd",field:"asdasd"};
+                $.ajax({
+                    url:"/game/update",
+                    type:"POST",
+                    data:data
+//                    data: JSON.stringify(data),
+//                    contentType:'application/json'
+                }).done(function (msg) {
+                    if(msg.status) {
+                        alert("更新成功");
+                        $("#wver").text(version);
+
+                    }
+                    else alert("取消喜欢");
+                });
+            });
+
+        });
+    </script>
+
+
+
+
+
 </head>
 <body>
 <div class="header" id="home" style="background: url(../static/images/zld1.jpg) no-repeat center top" th:style="'background:url(' + @{/images/{image}(image=${game.banner})} + ')no-repeat center top'"    >
     <div class="header-top">  <!--头页的上部-->
-        <a href="HomePage.html"><img src="../static/images/logo-2.png" th:src="@{/images/logo-2.png}" alt=""/></a> <!--到时候此处放logo,跳转到首页-->
+        <a href="HomePage.html" th:href="@{/home/}"><img src="../static/images/logo-2.png" th:src="@{/images/logo-2.png}"   alt=""/></a> <!--到时候此处放logo,跳转到首页-->
         <h1 th:text="${game.name}">塞尔达传说:荒野之息</h1> <!--此处应该能改名（后端）-->
         <h2 th:text="${game.enName}">The Legend of Zelda:Breath of the wild</h2>
+        <input type="hidden" id="gid" th:value="${game.id}">
 
     </div>
 
@@ -40,7 +106,7 @@
     <div class="about" id="about" style="background:url(../static/images/zld2.jpg) no-repeat center fixed" th:style="'background:url(' + @{/images/{image}(image=${game.image})} + ')no-repeat center fixed'">
         <div class="container">
             <div class="about-main">
-                <h3>游戏简介<span><a href="#">♥</a></span></h3>
+                <h3><span><a  id="del" >x</a></span>游戏简介<span><a id="like" >♥</a></span></h3>
                            <div class="about-top ">
                                <div class="about-text">
                                    <p th:text="${game.describe}">《荒野之息》将系列传统与现代流行的游戏元素融合得是如此完美，这个开放世界辽阔得令人惊叹，虽说在具体的尺寸上还是比洛圣都略逊一筹，但由于没有汽车飞机等机械载具，《荒野之息》在感官上给人带来的广阔体验依然在沙盒游戏中算是数一数二的。　《荒野之息》将系列传统与现代流行的游戏元素融合得是如此完美，运用得是如此别出心裁，以至于仍然传达出了绝大多数游戏都没法传达出的魅力。任天堂的这些努力让塞尔达系列再一次脱胎换骨，而这足以让若干年后的游戏界将像我们今天看待《时之笛》一样，将《荒野之息》视为游戏史上的另一座丰碑。</p>  <!--需要由后端输入-->
@@ -55,7 +121,7 @@
                                         <li><b>发行公司：</b><span th:text="${game.copyright}">任天堂</span></li>
                                         <li><b>发售平台：</b><span th:text="${game.platform}">Nintendo Switch</span></li>
                                         <li><b>联网类型：</b><span th:if="${game.connection==0}">单机游戏</span> <span th:if="${game.connection==1}">网络游戏</span></li>
-                                        <li><b>游戏版本：</b><span th:text="${game.version}">DLC1:剑之试炼</span></li>
+                                        <li><b>游戏版本：</b><span id="wver" th:text="${game.version}">DLC1:剑之试炼</span><span><a th:if="${user.priviledge==1}" id="update" >🛠</a></span></li>
                                         <li><b>发售年份：</b><span th:text="${#dates.format(game.time, 'yyyy-MM-dd')}">2017</span></li>
                                     </ul>
                                </div>
@@ -68,7 +134,7 @@
                 <h3>相关阅读</h3>
                 <div class="reading-list">
                     <ul >
-                        <li ><a>"米法的守护，一直都在哦"——浅谈四英杰《米法篇》</a></li>
+                        <li th:each="article : ${articles}"><a th:text="${article.name}" th:href="@{/article/{id}(id=${article.id})}">"米法的守护，一直都在哦"——浅谈四英杰《米法篇》</a></li>
                    <!--     <li><a>"尝尝乌鲁博萨的愤怒吧"——浅谈四英杰《乌鲁博萨篇》</a></li>   -->
                         <!--       <li><a>海拉尔世界厨艺大赛</a></li>     -->
                         </ul>

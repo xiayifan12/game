@@ -3,6 +3,8 @@ package com.game.controller;
 
 import com.game.model.ContentInfo;
 import com.game.model.GameInfo;
+import com.game.model.UserInfo;
+import com.game.service.ArticleInfoService;
 import com.game.service.ContentInfoService;
 import com.game.service.GameInfoService;
 import com.game.service.GameUserRelationService;
@@ -13,6 +15,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -35,12 +39,17 @@ public class GameInfoController {
     @Autowired
     GameUserRelationService gameUserRelationService;
 
+    @Autowired
+    ArticleInfoService articleInfoService;
+
     @GetMapping("/game/{id}")
-    public String getGameDetail(@PathVariable int id, Model mapper) {
+    public String getGameDetail(@PathVariable int id, Model mapper,HttpSession session) {
 
         GameInfo gameInfo = gameInfoService.getGameDetailById(id);
         mapper.addAttribute("content", contentInfoService.getContentDetailByType(0));
         mapper.addAttribute("game", gameInfo);
+        mapper.addAttribute("articles",articleInfoService.getArticleDetailByGame(gameInfo.getId()));
+        mapper.addAttribute("user",session.getAttribute("c_user"));
         return "GamePage.html";
     }
 
@@ -130,16 +139,50 @@ public class GameInfoController {
 
 
 
-    @GetMapping("/game/{id}/like")
+    @GetMapping("/game/like")
     @ResponseBody
-    public StatusJson AddCancelRelationForGame(@RequestParam("userid") int userId,@RequestParam("gameId") int gameId){
+    public StatusJson AddCancelRelationForGame(@RequestParam("gameId") int gameId,HttpSession session){
 
         StatusJson statusJson = new StatusJson();
-
-        statusJson.status = gameUserRelationService.CancelOrAddRelation(gameId,userId);
+        UserInfo user = (UserInfo) session.getAttribute("c_user");
+        statusJson.status = gameUserRelationService.CancelOrAddRelation(gameId,user.getId());
 
         return statusJson;
     }
+
+    @GetMapping("/game/delete")
+    @ResponseBody
+    public StatusJson deleteGaame(@RequestParam("gameid") int gameId){
+
+        StatusJson statusJson = new StatusJson();
+
+        if (gameInfoService.getGameDetailById(gameId)==null){
+            statusJson.status=0;
+        }
+        else {
+            gameInfoService.deleteGameInfoById(gameId);
+            statusJson.status=1;
+        }
+        return statusJson;
+    }
+
+
+    @PostMapping("/game/update")
+    @ResponseBody
+    public StatusJson updateGame(@RequestParam("gameId")int gameId,@RequestParam("version")String version){
+
+        StatusJson statusJson = new StatusJson();
+
+        statusJson.status = 1;
+
+        gameInfoService.updateVersionById(gameId,version);
+
+        return statusJson;
+
+
+    }
+
+
 
 
 }

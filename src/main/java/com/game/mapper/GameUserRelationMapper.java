@@ -14,7 +14,11 @@ public interface GameUserRelationMapper {
     List<Integer> getGameIdByUserId(int userId);
 
     @Select("select * from game_user_relation where user_id = #{userId} and game_id = #{gameId}")
-    LikeInfo getRelationByGameIdAndUserId(int userId , int gameId);
+    @Results({
+            @Result(property = "gameId",column = "game_id"),
+            @Result(property = "userId",column = "user_id")
+    })
+    LikeInfo getRelationByGameIdAndUserId(@Param("userId") int userId ,@Param("gameId") int gameId);
 
     @Insert("Insert into game_user_relation(game_id,user_id) values(#{gameId},#{userId})")
     void  insertRelation(@Param("gameId") int gameId,@Param("userId") int userId);

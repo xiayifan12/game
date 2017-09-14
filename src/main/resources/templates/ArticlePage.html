@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Blog-Page</title>
+    <title>大饱眼福</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="Games,Player">
 
@@ -27,13 +27,57 @@
             });
         });
     </script>
+
+    <script>
+        $(function () {
+            $("#delete1").click(function () {
+                var data = {'articleId':$("#aid").val()};
+//                var data = {title:"asdd",field:"asdasd"};
+                $.ajax({
+                    url:"/article/delete",
+                    type:"GET",
+                    data:data
+//                    data: JSON.stringify(data),
+//                    contentType:'application/json'
+                }).done(function (msg) {
+                    if(msg.status) {
+                        alert("ok");
+                        window.location.href="/home";
+
+                    }
+                    else alert("shit");
+                });
+            });
+
+            $("#delete2").click(function () {
+                var data = {'articleId':$("#aid").val()};
+//                var data = {title:"asdd",field:"asdasd"};
+                $.ajax({
+                    url:"/article/delete",
+                    type:"GET",
+                    data:data
+//                    data: JSON.stringify(data),
+//                    contentType:'application/json'
+                }).done(function (msg) {
+                    if(msg.status) {
+                        alert("ok");
+                        window.location.href="/home";
+
+                    }
+                    else alert("shit");
+                });
+            });
+
+        });
+    </script>
+
 </head>
-</head>
+
 <body>
 <!--头页-->
 <div class="header" id="home">
     <div class="header-top">  <!--头页的上部-->
-        <a th:href="@{/}" ><img src="../static/images/logo-2.png"  th:src="@{/images/logo-2.png}" alt=""/></a> <!--到时候此处放logo,跳转到首页-->
+        <a th:href="@{/home}" ><img src="../static/images/logo-2.png"  th:src="@{/images/logo-2.png}" alt=""/></a> <!--到时候此处放logo,跳转到首页-->
     </div>
 
     <div class="header-home">
@@ -47,6 +91,7 @@
                     <div class="col-lg-9 main-header">
                         <!--/*@thymesVar id="title" type="java.lang.String"*/-->
                         <h1 th:text="${article.name}">selsblater 1917使用教程</h1> <!--此处应该能改名（后端）-->
+                        <input id="aid" type="hidden" th:value="${article.id}">
                     </div>
 
 
@@ -109,6 +154,10 @@
         </div>
         <div class="clearfix"></div>
     </div>
+    <h1><a th:if="${article.authorId == user.id}" th:href="@{/article/update/{id}(id = ${article.id})}">修改</a></h1>
+    <h1><a id="delete1" th:if="${article.authorId == user.id}" >删除</a></h1>
+    <h1><a  id="delete2" th:if="${user.priviledge == 1}">删除</a></h1>
+
 </div>
 <!--头页结束-->
 </body>
