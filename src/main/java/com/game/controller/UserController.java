@@ -1,5 +1,7 @@
 package com.game.controller;
 
+import com.game.model.GameInfo;
+import com.game.service.GameUserRelationService;
 import com.game.service.UserInfoService;
 import com.game.util.LoginForm;
 import com.game.util.StatusJson;
@@ -9,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -20,6 +23,9 @@ public class UserController {
     @Autowired
     UserInfoService userInfoService;
 
+    @Autowired
+    GameUserRelationService gameUserRelationService;
+
     @GetMapping("/")
     public String index(){
         return "login";
@@ -28,7 +34,9 @@ public class UserController {
     @GetMapping("/user/{id}")
     public String userHome(@PathVariable int id, HttpSession session, Model mapper){
 
+       List <GameInfo>  games = gameUserRelationService.getGamesRelation2User(id);
         mapper.addAttribute("user",session.getAttribute("c_user"));
+        mapper.addAttribute("games",games);
         return "PersonalPage";
     }
 

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>HomePage</title>
+    <title>哔哔首页</title>
 
 
     <!--下面一句表示当页面打开时先设置定时器，当时间为0时启动hideURLbar函数-->
@@ -13,7 +13,7 @@
         window.scrollTo(0, 1);
     } </script>
     <link href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}" rel="stylesheet" type="text/css" media="all"> <!--media="all"表示再任何设备上都套用这个css-->
-    <link href="../static/css/style_home.css" th:href="@{css/style_home.css}" rel="stylesheet" type="text/css" media="all">
+    <link href="../static/css/style_home.css" th:href="@{/css/style_home.css}" rel="stylesheet" type="text/css" media="all">
 
     <!--字体-->
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic'
@@ -47,14 +47,14 @@
 <div class="header" id="home">
     <div class="header-top">  <!--头页的上部-->
         <a href="#" th:href="@{/user/{id}(id=${user.id})}"><img src="../static/images/logo-2.png" th:src="@{/images/logo-2.png}" alt=""/></a> <!--到时候此处放logo,跳转到首页-->
-        <h1>BIBI GUY</h1> <!-- 网站名  需要更换字体-->
+        <h1 style="font-family: 华文行楷,cursive;">哔哔小子</h1> <!-- 网站名  需要更换字体-->
     </div>
 </div>
 
 <<!--games-->
 <div class="container">
     <div class="games">
-        <a th:href="@{/game/}"><h3 >Games</h3></a>
+        <a th:href="@{/game/}"><h3 style="font-family: 'MS Gothic',cursive">Games</h3></a>
         <section>
             <ul id="da-thumbs" class="da-thumbs" th:each="game:${game}">
                 <li>
@@ -74,36 +74,36 @@
 
 <div class="container">
     <div class="article">
-        <h3 >Articles</h3>
+       <a th:href="@{/article}"><h3 style="font-family: 'MS Gothic',cursive" >Articles</h3></a>
         <ul>
             <section>
-                <ul id="da-thumbs1" class="da-thumbs1">
-                    <li>
-                        <a href="../static/images/article.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox">
+                <ul id="da-thumbs1" class="da-thumbs1" >
+                    <li th:each="article : ${articles}">
+                        <a href="../static/images/article.jpg" th:href="@{/article/{id}(id=${article.id})}" rel="title" class="b-link-stripe b-animate-go  thickbox">
                             <img src="../static/images/article.jpg" th:src="@{/images/article.jpg}" alt="" />
                             <div>
-                                <h5>舌尖上的海拉尔</h5>
+                                <h5 th:text="${article.name}">舌尖上的海拉尔</h5>
                             </div>
                         </a>
                     </li>
 
-                    <li>
-                        <a href="../static/images/article.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox">
-                            <img src="../static/images/article.jpg" th:src="@{/images/article.jpg}" alt="" />
-                            <div>
-                                <h5>浅谈战地1中装备的真实性</h5>
-                            </div>
-                        </a>
-                    </li>
+                    <!--<li>-->
+                        <!--<a href="../static/images/article.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox">-->
+                            <!--<img src="../static/images/article.jpg" th:src="@{/images/article.jpg}" alt="" />-->
+                            <!--<div>-->
+                                <!--<h5>浅谈战地1中装备的真实性</h5>-->
+                            <!--</div>-->
+                        <!--</a>-->
+                    <!--</li>-->
 
-                    <li>
-                        <a href="../static/images/article.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox">
-                            <img src="../static/images/article.jpg" th:src="@{/images/article.jpg}" alt="" />
-                            <div>
-                                <h5>我在天际省吃着炸鸡</h5>
-                            </div>
-                        </a>
-                    </li>
+                    <!--<li>-->
+                        <!--<a href="../static/images/article.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox">-->
+                            <!--<img src="../static/images/article.jpg" th:src="@{/images/article.jpg}" alt="" />-->
+                            <!--<div>-->
+                                <!--<h5>我在天际省吃着炸鸡</h5>-->
+                            <!--</div>-->
+                        <!--</a>-->
+                    <!--</li>-->
                     <div class="clearfix"> </div>
                 </ul>
             </section>

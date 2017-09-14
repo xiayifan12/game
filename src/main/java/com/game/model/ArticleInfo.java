@@ -9,6 +9,15 @@ public class ArticleInfo {
     private Date cTime;
     private  Date mTime;
     private int authorId;
+    private int gameId;
+
+    public int getGameId() {
+        return gameId;
+    }
+
+    public void setGameId(int gameId) {
+        this.gameId = gameId;
+    }
 
     public int getId() {
         return id;

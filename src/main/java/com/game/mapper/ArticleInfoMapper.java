@@ -15,14 +15,20 @@ public interface ArticleInfoMapper {
 //    @Results({
 //            @Result(property = "enName", column = "enname")
 //    })
-    @Insert("insert into article(name, content, c_date, m_date, author_id) values(#{name}, #{content}, #{cTime}, #{mTime}, #{authorId})")
-    boolean addArticle(String name, String content, Date cTime, Date mTime, int authorId);
+    @Insert("insert into articleinfo(name, content,author_id,game_id) values(#{name}, #{content},  #{authorId},#{gameId})")
+    boolean addArticle(@Param("name") String name,@Param("content") String content,@Param("authorId") int authorId,@Param("gameId")int gameId);
 
-    @Delete("delete article where id = #{id}")
-    boolean deleteArticle(int id);
+    @Delete("delete from articleinfo where id = #{id}")
+    boolean deleteArticle(@Param("id")int id);
 
     @Select("SELECT * FROM articleinfo where id = #{id}")
+    @Results({
+            @Result(property = "authorId",column = "author_id")
+    })
     ArticleInfo getArticleInfoById(int id);
+
+    @Select("SELECT * FROM articleinfo where game_id = #{gameId}")
+    List<ArticleInfo> getArticleInfoByGame(int gameId);
 
     @Select("SELECT * FROM articleinfo where id = #{id}")
     String getAuthorNameById(int id);
@@ -36,11 +42,20 @@ public interface ArticleInfoMapper {
     @Select("Select * from articleinfo where m_date = #{mTime}")
     List<ArticleInfo> getArticleInfomTime(Date mTime);
 
-    @Update("update articleinfo set content = #{content} and m_date = #{mTime} where id = #{id}")
-    boolean updateArticleInfoById(String content, int id, Date mTime);
+    @Select("Select * from articleinfo where name like #{title}")
+    List<ArticleInfo> getArticleInfomFromTitle(@Param("title") String title);
+
+    @Update("update articleinfo set content = #{content} where id = #{id}")
+    boolean updateArticleInfoById(@Param("content") String content,@Param("id") int id);
 
     @SelectProvider(type = SqlCreator.class ,method = "CreateSearchSql")
     List<ArticleInfo> getArticleInfoBySearch(int type, int time);
+
+    @Select("SELECT count(*) from articleinfo")
+    Integer getCountAricleInfo();
+
+    @Select("SELECT * from articleinfo limit #{rnum},#{num}")
+    List<ArticleInfo> getArticleInfoRandom(@Param("rnum") int rnum,@Param("num") int num);
 }
 
 

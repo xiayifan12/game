@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>大书特书</title>
+    <title>大改特改</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="Games,Player">
 
@@ -46,17 +46,21 @@
     <script>
         $(function () {
             $("#button").click(function () {
-                var data = {'title':$("#title").val(),'field':$("#field").val(),'game':$("#game").val()};
+                var data = {'field':$("#field").val(),'articleId':$("#articleId").val()};
 //                var data = {title:"asdd",field:"asdasd"};
                 $.ajax({
-                    url:"/article/add/up",
+                    url:"/article/update/up",
                     type:"POST",
                     data:data
 //                    data: JSON.stringify(data),
 //                    contentType:'application/json'
                 }).done(function (msg) {
-                    if(msg.status) alert("ok");
-                    else alert("shit");
+                    if(msg.status){
+                        alert("ok");
+                        var url = "/article/"+$("#articleId").val();
+                        window.location.href=url;
+                    }
+                    else alert("nope!");
                 });
             });
 
@@ -73,7 +77,7 @@
 <!--头页-->
 <div class="header" id="home">
     <div class="header-top">  <!--头页的上部-->
-        <a th:href="@{/user/{id}(id=${user.id})}" href="BlogPage.html"><img src="../static/images/logo-2.png" th:src="@{/images/logo-2.png}" alt=""/></a> <!--到时候此处放logo,跳转到首页-->
+        <a th:href="@{/user/{id}(id=${user.id})}" ><img src="../static/images/logo-2.png" th:src="@{/images/logo-2.png}" alt=""/></a> <!--到时候此处放logo,跳转到首页-->
     </div>
 
     <div class="header-home">
@@ -84,8 +88,9 @@
                     <div class="col-lg-3 logo-header">
                         <a th:href="@{/user/{id}(id=${user.id})}" href="#"><img src="../static/images/logo-2.png" th:src="@{/images/logo-2.png}" alt=""/></a>
                     </div>
+
                     <div class="col-lg-9 main-header">
-                        <h1>大书特书</h1><!--此处应该能改名（后端）-->
+                        <h1>大改特改</h1><!--此处应该能改名（后端）-->
                     </div>
 
 
@@ -141,22 +146,14 @@
     <div class="img-rounded about-top" id="article">
         <div class="about-text">
             <div class="text-title">
-                <form>
-                    <textarea id="title"  value="你的题目:" onfocus="if(this.value == 'MESSAGE') this.value='';" onblur="if(this.value == '') this.value='你的题目';">你的题目</textarea>
-                </form>
-            </div>
-            <div class="text-title">
-                <form>
-                    <textarea id="game"  value="涉及游戏:" onfocus="if(this.value == 'MESSAGE') this.value='';" onblur="if(this.value == '') this.value='涉及游戏';">涉及游戏</textarea>
-                </form>
-            </div>
             <div class="text-field-area">
                 <form>
-                    <textarea id="field" value="你的文章:" onfocus="if(this.value == 'MESSAGE') this.value='';" onblur="if(this.value == '') this.value='你的文章';">你的文章</textarea>
+                    <input type="hidden" id="articleId" th:value="${articleId}">
+                    <textarea id="field" value="修改你的文章:" onfocus="if(this.value == 'MESSAGE') this.value='';" onblur="if(this.value == '') this.value='修改你的文章';">你的文章</textarea>
                 </form>
             </div>
             <div class="button">
-                    <input id="button" type="button" value="send">
+                <input id="button" type="button" value="send">
             </div>
             <div class="clearfix"> </div>        <!--需要由后端输入-->
         </div>
