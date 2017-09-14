@@ -17,8 +17,11 @@ package com.game.util;
             return sql;
     }
 
-    public static String CreateArticleSearchSql(String name, int time){
+    public static String CreateArticleSearchSql(int type, String name, int time){
         String sql = "Select * from articleinfo where 1 ";
+
+        if(type!=0){ sql = sql + "and type_id=" + type+" ";}
+
         if(name!=null){ sql = sql + "and name=" + name+" ";}
 
         if(time!=0) sql = sql + "and c_date>='" + (time+2010)+"-01-01' and c_date<='"+ (time+2010)+"-12-31' ";

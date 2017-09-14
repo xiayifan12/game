@@ -19,8 +19,8 @@ public class ArticleInfoService {
         return articleInfoMapper.getArticleInfoById(id);
     }
 
-    public List<ArticleInfo> getArticleSearchInfo(String name, int time){
-        List<ArticleInfo> articleInfos = articleInfoMapper.getArticleInfoBySearch(name, time);
+    public List<ArticleInfo> getArticleSearchInfo(int type, String name, int time){
+        List<ArticleInfo> articleInfos = articleInfoMapper.getArticleInfoBySearch(type, name, time);
 
         return articleInfos;
     }

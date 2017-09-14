@@ -35,7 +35,8 @@ public class ArticleInfoController {
     }
 
     @GetMapping("/article")
-    public String getGameContentAndInfo(Model mapper , @RequestParam(name = "name",required=false,defaultValue = "0")String name,
+    public String getGameContentAndInfo(Model mapper , @RequestParam(name = "type", required = false, defaultValue = "0") int type,
+                                                        @RequestParam(name = "name",required=false,defaultValue = "0")String name,   //need?
                                                         @RequestParam(name = "time",required=false,defaultValue = "0")int time){
 
         //ResultMap:{Status”:1 or 0,”Key”:{“Type”:Context[],”Time”:Context[]},”Article”:ArticleInfo[]}
@@ -45,7 +46,8 @@ public class ArticleInfoController {
 //        List<ContentInfo> articleTimeInfo = contentInfoService.getContentDetailByType(1);
 //        mapper.addAttribute("time", articleTimeInfo);
 
-        List<ArticleInfo> articleInfos = articleInfoService.getArticleSearchInfo(name, time);
+        //
+        List<ArticleInfo> articleInfos = articleInfoService.getArticleSearchInfo(type, name, time);
         mapper.addAttribute("article", articleInfos);
 
         return "ArticlePage.html";

@@ -40,7 +40,7 @@ public interface ArticleInfoMapper {
     boolean updateArticleInfoById(String content, int id, Date mTime);
 
     @SelectProvider(type = SqlCreator.class ,method = "CreateArticleSearchSql")
-    List<ArticleInfo> getArticleInfoBySearch(String name, int time);
+    List<ArticleInfo> getArticleInfoBySearch(int type, String name, int time);
 }
 
 
