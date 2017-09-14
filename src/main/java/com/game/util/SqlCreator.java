@@ -17,6 +17,16 @@ package com.game.util;
             return sql;
     }
 
+    public static String CreateArticleSearchSql(String name, int time){
+        String sql = "Select * from articleinfo where 1 ";
+        if(name!=null){ sql = sql + "and name=" + name+" ";}
+
+        if(time!=0) sql = sql + "and c_date>='" + (time+2010)+"-01-01' and c_date<='"+ (time+2010)+"-12-31' ";
+
+        return sql;
+    }
+
+
     public static String changePlatNum2String(int plat){
         switch (plat){
             case 1:
